@@ -11,7 +11,7 @@
   header {
     display: flex;
     justify-content: space-between;
-    align-items: center; /* aligne verticalement logo et barre */
+    align-items: center;
     background: #fff;
     padding: 5px 20px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -19,17 +19,8 @@
     top: 0;
     z-index: 100;
   }
-  .logo img {
-    height: 50px;          /* limite la hauteur du logo */
-    max-height: 50px;
-    object-fit: contain;    /* ajuste l'image dans le cadre */
-    display: block;
-  }
-  .search-help {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-  }
+  .logo img { height: 50px; max-height: 50px; object-fit: contain; display: block; }
+  .search-help { display: flex; align-items: center; gap: 15px; }
   input[type="text"] { padding:8px; border-radius:8px; border:1px solid #ccc; width:200px; }
   a.help-btn { text-decoration:none; background:#25D366; color:#fff; padding:10px 15px; border-radius:10px; font-weight:bold; transition:0.3s; }
   a.help-btn:hover { background:#1ebe5d; }
@@ -40,7 +31,10 @@
 
   /* Container produits */
   .products-container {
-    display:flex; justify-content:space-between; flex-wrap:nowrap; overflow-x:auto;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    overflow-x:auto;
     padding:20px; max-width:1200px; margin:auto; gap:10px;
   }
   .card {
@@ -133,7 +127,7 @@
       <img src="Philips3.jpg">
       <img src="Philips4.jpg">
       <img src="Philips5.jpg">
-      <img src="Philips6.jpg">
+      <img src="Philils6.jpg">
       <button class="slider-btn prev" onclick="prevSlide('Philips')">&#10094;</button>
       <button class="slider-btn next" onclick="nextSlide('Philips')">&#10095;</button>
     </div>
@@ -162,7 +156,70 @@
     <a class="whatsapp" href="https://wa.me/212674994867" target="_blank">📱 Commander sur WhatsApp</a>
   </div>
 
+  <!-- Remington Innovation -->
+  <div class="card">
+    <div class="images" id="RemingtonInnovation">
+      <img src="Proremington1.jpg" class="active">
+      <img src="Proremington2.jpg">
+      <img src="Proremington3.jpg">
+      <img src="Proremington4.jpg">
+      <img src="Proremington5.jpg">
+      <img src="Proremington6.jpg">
+      <img src="Proremington7.jpg">
+      <img src="Proremington8.jpg">
+      <button class="slider-btn prev" onclick="prevSlide('RemingtonInnovation')">&#10094;</button>
+      <button class="slider-btn next" onclick="nextSlide('RemingtonInnovation')">&#10095;</button>
+    </div>
+    <h3>Remington Lisseur Cheveux Innovation: Capteur de Protection Keratin Therapy</h3>
+    <div class="price">💰 850 DH</div>
+    <p>Fer à lisser avec soin Kératine & Huile d'Amande, plaques céramique, écran LCD, température 160-230°C, pochette incluse.</p>
+    <div class="garantie">Garantie 2 ans</div>
+    <a class="whatsapp" href="https://wa.me/212674994867" target="_blank">📱 Commander sur WhatsApp</a>
+  </div>
+
+  <!-- Philips Rouge -->
+  <div class="card">
+    <div class="images" id="PhilipsRouge">
+      <img src="Philipsrouge1.jpg" class="active">
+      <img src="Philipsrouge2.jpg">
+      <img src="Philipsrouge3.jpg">
+      <img src="Philipsrouge4.jpg">
+      <img src="Philipsrouge5.jpg">
+      <img src="Philipsrouge6.jpg">
+      <button class="slider-btn prev" onclick="prevSlide('PhilipsRouge')">&#10094;</button>
+      <button class="slider-btn next" onclick="nextSlide('PhilipsRouge')">&#10095;</button>
+    </div>
+    <h3>Philips Epilateur Satinelle Essentiel BRE225/00</h3>
+    <div class="price">💰 550 DH</div>
+    <p>Épilateur avec 21 embouts et 2 réglages de vitesse pour un confort optimal.</p>
+    <div class="garantie">Garantie 2 ans</div>
+    <a class="whatsapp" href="https://wa.me/212674994867" target="_blank">📱 Commander sur WhatsApp</a>
+  </div>
+
 </div>
+
+<!-- Footer élégant et stylé -->
+<footer style="
+  text-align:center; 
+  padding:15px; 
+  background:#fff; 
+  margin-top:40px; 
+  font-size:14px; 
+  color:#555; 
+  font-family: 'Arial', sans-serif; 
+  font-style:italic;
+  transition: all 0.3s ease;
+">
+  Made with 
+  <span style="
+    color:#e74c3c; 
+    font-weight:bold; 
+    transition: transform 0.3s ease;
+  " onmouseover="this.style.transform='scale(1.3)';" onmouseout="this.style.transform='scale(1)';">
+    &#10084;
+  </span> 
+  by <strong>Omar</strong>
+</footer>
 
 <script>
   const sliders={};
@@ -187,7 +244,7 @@
     index=(index+1)%images.length;
     showSlide(id,index);
   }
-  ['Babyliss','Demeliss','Philips','Remington'].forEach(id=>showSlide(id,0));
+  ['Babyliss','Demeliss','Philips','Remington','RemingtonInnovation','PhilipsRouge'].forEach(id => showSlide(id,0));
 </script>
 
 </body>
