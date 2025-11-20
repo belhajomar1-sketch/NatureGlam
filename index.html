@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NatureGlam</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Header */
+  header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    background: #111;
+    padding: 10px 20px;
+    color: white;
+  }
+  header img {
+    height: 50px;
+    max-width: 150px;
+    margin-bottom: 5px;
+  }
+  .search-bar {
+    flex: 1;
+    min-width: 150px;
+    margin: 5px 20px;
+  }
+  .search-bar input {
+    width: 100%;
+    padding: 8px;
+    border-radius: 12px;
+    border: none;
+  }
+  .help-button a {
+    background: #25D366;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+  }
+
+  /* Bannières */
+  .banner {
+    background: #0b84ff;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  .authentic {
+    background: #ff9800;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  /* Produits */
+  .products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+  }
+  .card {
+    background: #fff;
+    border-radius: 15px;
+    padding: 15px;
+    width: 220px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    text-align: center;
+  }
+  .images {
+    position: relative;
+  }
+  .images img {
+    width: 100%;
+    border-radius: 12px;
+    max-height: 150px;
+    object-fit: cover;
+    display: none;
+  }
+  .images img.active {
+    display: block;
+  }
+  .slider-buttons {
+    margin-top: 5px;
+  }
+  .slider-buttons button {
+    padding: 5px 8px;
+    margin: 0 3px;
+    border: none;
+    background: #0b84ff;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+  }
+  h3 {
+    margin: 10px 0;
+    font-size: 16px;
+    color: #111;
+  }
+  .price {
+    font-size: 16px;
+    color: #0b84ff;
+    margin-bottom: 8px;
+    font-weight: bold;
+  }
+  p {
+    color: #555;
+    font-size: 13px;
+    line-height: 1.4;
+    margin-bottom: 8px;
+  }
+  .whatsapp {
+    display: block;
+    text-decoration: none;
+    background: #25D366;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background 0.3s;
+  }
+  .whatsapp:hover {
+    background: #1ebe5d;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <img src="logo.png" alt="NatureGlam Logo">
+  <div class="search-bar">
+    <input type="text" placeholder="Rechercher un article...">
+  </div>
+  <div class="help-button">
+    <a href="https://wa.me/212674994867" target="_blank">Besoin d'aide ? Contactez-nous</a>
+  </div>
+</header>
+
+<div class="banner">🚚 Livraison gratuite partout au Maroc</div>
+<div class="authentic">✅ Tous les articles sont authentiques et originaux</div>
+
+<div class="products">
+
+  <!-- Babyliss -->
+  <div class="card">
+    <div class="images" id="babyliss-slider">
+      <img src="Babyliss1.jpg" class="active">
+      <img src="Babyliss2.jpg">
+      <img src="Babyliss3.jpg">
+      <img src="Babyliss4.jpg">
+      <img src="Babyliss5.jpg">
+      <img src="Babyliss6.jpg">
+    </div>
+    <div class="slider-buttons">
+      <button onclick="prevImage('babyliss-slider')">⏮</button>
+      <button onclick="nextImage('babyliss-slider')">⏭</button>
+    </div>
+    <h3>Babyliss Brosse Soufflante 1200W</h3>
+    <div class="price">💰 800 DH</div>
+    <p>Brosse soufflante 1200W avec plusieurs embouts pour un brushing rapide et un résultat professionnel.</p>
+    <p>Garantie 2 ans</p>
+    <a class="whatsapp" href="https://wa.me/212674994867" target="_blank">📱 Commander sur WhatsApp</a>
+  </div>
+
+  <!-- Demeliss -->
+  <div class="card">
+    <div class="images" id="demeliss-slider">
+      <img src="Demeliss1.jpg" class="active">
+      <img src="Demeliss2.jpg">
+      <img src="Demeliss3.jpg">
+      <img src="Demeliss4.jpg">
+      <img src="Demeliss5.jpg">
+      <img src="Demeliss6.jpg">
+      <img src="Demeliss7.jpg">
+    </div>
+    <div class="slider-buttons">
+      <button onclick="prevImage('demeliss-slider')">⏮</button>
+      <button onclick="nextImage('demeliss-slider')">⏭</button>
+    </div>
+    <h3>Demeliss SAINT ALGUE Lisseur GOLD</h3>
+    <div class="price">💰 500 DH</div>
+    <p>Lisseur céramique-tourmaline professionnel, plaques fines, température réglable 150°C à 230°C.</p>
+    <p>Garantie 2 ans</p>
+    <a class="whatsapp" href="https://wa.me/212674994867" target="_blank">📱 Commander sur WhatsApp</a>
+  </div>
+
+  <!-- Philips Satinelle -->
+  <div class="card">
+    <div class="images" id="philips-slider">
+      <img src="Philips1.jpg" class="active">
+      <img src="Philips2.jpg">
+      <img src="Philips3.jpg">
+      <img src="Philips4.jpg">
+      <img src="Philips5.jpg">
+      <img src="Philips6.jpg">
+    </div>
+    <div class="slider-buttons">
+      <button onclick="prevImage('philips-slider')">⏮</button>
+      <button onclick="nextImage('philips-slider')">⏭</button>
+    </div>
+    <h3>Philips Satinelle Essential BRE224/00 Épilateur compact filaire</h3>
+    <div class="price">💰 450 DH</div>
+    <p>Epilateur compact filaire pour une épilation facile et rapide.</p>
+    <p>Garantie 2 ans</p>
+    <a class="whatsapp" href="https://wa.me/212674994867" target="_blank">📱 Commander sur WhatsApp</a>
+  </div>
+
+  <!-- Remington Lisseur -->
+  <div class="card">
+    <div class="images" id="remington-slider">
+      <img src="Remington1.jpg" class="active">
+      <img src="Remington2.jpg">
+      <img src="Remington3.jpg">
+      <img src="Remington4.jpg">
+      <img src="Remington5.jpg">
+    </div>
+    <div class="slider-buttons">
+      <button onclick="prevImage('remington-slider')">⏮</button>
+      <button onclick="nextImage('remington-slider')">⏭</button>
+    </div>
+    <h3>Remington Lisseur Cheveux 4X protection Ceramic Slim S1510</h3>
+    <div class="price">💰 500 DH</div>
+    <p>Lisseur céramique-tourmaline pour cheveux lisses et brillants.</p>
+    <p>Garantie 2 ans</p>
+    <a class="whatsapp" href="https://wa.me/212674994867" target="_blank">📱 Commander sur WhatsApp</a>
+  </div>
+
+</div>
+
+<script>
+function nextImage(sliderId) {
+  const slider = document.getElementById(sliderId);
+  const images = slider.getElementsByTagName('img');
+  let index = Array.from(images).findIndex(img => img.classList.contains('active'));
+  images[index].classList.remove('active');
+  index = (index + 1) % images.length;
+  images[index].classList.add('active');
+}
+function prevImage(sliderId) {
+  const slider = document.getElementById(sliderId);
+  const images = slider.getElementsByTagName('img');
+  let index = Array.from(images).findIndex(img => img.classList.contains('active'));
+  images[index].classList.remove('active');
+  index = (index - 1 + images.length) % images.length;
+  images[index].classList.add('active');
+}
+</script>
+
+</body>
+</html>
