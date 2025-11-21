@@ -234,7 +234,7 @@
 
   <!-- Philips Epilateur Rouge -->
   <div class="card">
-    <div class="images" id="PhilipsRouge" onclick="window.location.href='PhilipsRouge.html'">
+    <div class="images" id="PhilipsRouge">
       <img src="PhilipsRouge1.jpg" class="active">
       <img src="PhilipsRouge2.jpg">
       <img src="PhilipsRouge3.jpg">
@@ -256,11 +256,14 @@
 
   <!-- Luxeol -->
   <div class="card">
-    <div class="images" id="Luxeol" onclick="window.location.href='Luxeol.html'">
-      <img src="Luxeol1.jpg" class="active">
-      <img src="Luxeol2.jpg">
-      <img src="Luxeol3.jpg">
-      <img src="Luxeol4.jpg">
+    <div class="images" id="Luxeol">
+      <img src="luxeol1.jpg" class="active">
+      <img src="luxeol2.jpg">
+      <img src="luxeol3.jpg">
+      <img src="luxeol4.jpg">
+      <img src="luxeol5.jpg">
+      <img src="luxeol6.jpg">
+      <img src="luxeol7.jpg">
       <button class="slider-btn prev" onclick="prevSlide('Luxeol'); event.stopPropagation();">&#10094;</button>
       <button class="slider-btn next" onclick="nextSlide('Luxeol'); event.stopPropagation();">&#10095;</button>
     </div>
@@ -277,5 +280,28 @@
 </div>
 
 <footer style="text-align:center; padding:15px; background:#fff; margin-top:40px; font-size:14px; color:#555; font-family: 'Arial', sans-serif; font-style:italic;">
-  Made with 
-  <span style="color:#
+  Made with ❤️ by NatureGlam
+</footer>
+
+<script>
+  const sliders = {};
+  document.querySelectorAll('.images').forEach(slider => {
+    const id = slider.id;
+    sliders[id] = { index:0, images: slider.querySelectorAll('img') };
+    sliders[id].images[0].classList.add('active');
+  });
+
+  function showSlide(id, n){
+    const slider = sliders[id];
+    if(!slider) return;
+    slider.images.forEach(img => img.classList.remove('active'));
+    slider.index = (n + slider.images.length) % slider.images.length;
+    slider.images[slider.index].classList.add('active');
+  }
+
+  function nextSlide(id){ showSlide(id, sliders[id].index +1); }
+  function prevSlide(id){ showSlide(id, sliders[id].index -1); }
+</script>
+
+</body>
+</html>
