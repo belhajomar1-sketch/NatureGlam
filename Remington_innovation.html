@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Remington Lisseur Cheveux Innovation - NatureGlam</title>
+<style>
+  body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f5f5f5; }
+  header { display:flex; justify-content:space-between; align-items:center; background:#fff; padding:10px 20px; box-shadow:0 4px 8px rgba(0,0,0,0.1); position:sticky; top:0; z-index:100; }
+  .logo img { height:80px; object-fit:contain; }
+  .header-info { font-weight:bold; color:#0b84ff; font-size:16px; }
+  .banner { background:#0b84ff; color:white; text-align:center; padding:10px; font-size:16px; font-weight:bold; }
+  .product-container { display:flex; flex-wrap:wrap; max-width:1200px; margin:auto; gap:20px; padding:20px; justify-content:center; }
+  .product-images { flex:1 1 400px; display:flex; flex-direction:column; align-items:center; }
+  .product-images img { width:100%; max-width:400px; border-radius:12px; margin-bottom:10px; }
+  .slider-btn { background:#0b84ff; color:white; border:none; font-size:18px; padding:5px 10px; cursor:pointer; border-radius:5px; margin:5px; }
+  .product-details { flex:1 1 400px; background:#fff; border-radius:15px; padding:20px; box-shadow:0 6px 20px rgba(0,0,0,0.1); }
+  .product-details h1 { font-size:24px; margin-bottom:10px; }
+  .price { font-size:22px; color:#0b84ff; font-weight:bold; margin:10px 0; }
+  .desc { font-size:14px; line-height:1.5; margin-bottom:10px; }
+  .whatsapp { display:block; text-decoration:none; background:#25D366; color:white; text-align:center; padding:10px; border-radius:12px; font-size:16px; font-weight:bold; margin-top:15px; transition:0.3s; }
+  .whatsapp:hover { background:#1ebe5d; }
+  .section-title { font-weight:bold; font-size:16px; margin-top:15px; margin-bottom:5px; }
+  footer { text-align:center; padding:15px; background:#fff; margin-top:40px; font-size:14px; color:#555; font-family: Arial; font-style:italic; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo"><img src="nov. 2025, 02_24_43.png" alt="NatureGlam Logo"></div>
+  <div class="header-info">Retour gratuit</div>
+</header>
+
+<div class="banner">🚚 Livraison gratuite partout au Maroc</div>
+
+<div class="product-container">
+
+  <div class="product-images">
+    <img src="Proremington1.jpg" id="main-img" alt="Remington Lisseur Cheveux Innovation">
+    <div>
+      <button class="slider-btn" onclick="prevSlide()">&#10094; Précédent</button>
+      <button class="slider-btn" onclick="nextSlide()">Suivant &#10095;</button>
+    </div>
+  </div>
+
+  <div class="product-details">
+    <h1>Remington Lisseur Cheveux Innovation : Capteur de Protection Keratin Therapy</h1>
+    <div class="price">💰 850 DH</div>
+    <div class="desc">
+      Fer à lisser avec soin Kératine & Huile d'Amande, plaques céramique, écran LCD, température 160-230°C, pochette incluse.
+    </div>
+
+    <div class="section-title">À propos de cet article</div>
+    <div class="desc">
+      Lisseur cheveux innovant avec capteur de protection Keratin Therapy, conçu pour protéger vos cheveux tout en offrant un lissage parfait. Convient pour tous types de cheveux et usage quotidien. Plaques céramique, glisse facile et chaleur homogène.
+    </div>
+
+    <div class="section-title">Détails sur le produit</div>
+    <div class="desc">
+      Marque: Remington<br>
+      Modèle: Innovation CI96W1<br>
+      Plaques: Céramique enrichie en protéine de soie<br>
+      Température: 160-230°C, écran LCD<br>
+      Accessoires: Pochette incluse<br>
+      Caractéristique spéciale: Capteur de protection Keratin Therapy
+    </div>
+
+    <div class="section-title">Politique de retour</div>
+    <div class="desc">
+      Retours & garanties légales: Retour possible jusqu’à 14 jours pour remboursement complet.<br>
+      Réparation, remplacement ou remboursement pendant 2 ans au titre de la garantie légale.
+    </div>
+
+    <a class="whatsapp" href="https://wa.me/212674994867" target="_blank">📱 Commander sur WhatsApp</a>
+  </div>
+
+</div>
+
+<footer>
+  Made with <span style="color:#e74c3c; font-weight:bold;">&#10084;</span> by <strong>Omar</strong>
+</footer>
+
+<script>
+  const images = ["Proremington1.jpg","Proremington2.jpg","Proremington3.jpg","Proremington4.jpg","Proremington5.jpg","Proremington6.jpg","Proremington7.jpg","Proremington8.jpg"];
+  let index = 0;
+  function showImage() { document.getElementById("main-img").src = images[index]; }
+  function prevSlide() { index = (index-1+images.length)%images.length; showImage(); }
+  function nextSlide() { index = (index+1)%images.length; showImage(); }
+</script>
+
+</body>
+</html>
