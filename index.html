@@ -69,7 +69,7 @@
 <body>
 
 <header>
-  <div class="logo"><img src="nov. 2025, 02_24_43.png" alt="NatureGlam Logo"></div>
+  <div class="logo"><img src="logo.png" alt="NatureGlam Logo"></div>
   <div class="search-help">
     <input type="text" placeholder="Rechercher un article...">
     <a class="help-btn" href="https://wa.me/212674994867" target="_blank">Besoin d'aide ? Contactez-nous</a>
@@ -235,12 +235,12 @@
   <!-- Philips Epilateur Rouge -->
   <div class="card">
     <div class="images" id="PhilipsRouge" onclick="window.location.href='PhilipsRouge.html'">
-      <img src="Philipsrouge1.jpg" class="active">
-      <img src="Philipsrouge2.jpg">
-      <img src="Philipsrouge3.jpg">
-      <img src="Philipsrouge4.jpg">
-      <img src="Philipsrouge5.jpg">
-      <img src="Philipsrouge6.jpg">
+      <img src="PhilipsRouge1.jpg" class="active">
+      <img src="PhilipsRouge2.jpg">
+      <img src="PhilipsRouge3.jpg">
+      <img src="PhilipsRouge4.jpg">
+      <img src="PhilipsRouge5.jpg">
+      <img src="PhilipsRouge6.jpg">
       <button class="slider-btn prev" onclick="prevSlide('PhilipsRouge'); event.stopPropagation();">&#10094;</button>
       <button class="slider-btn next" onclick="nextSlide('PhilipsRouge'); event.stopPropagation();">&#10095;</button>
     </div>
@@ -264,7 +264,7 @@
       <button class="slider-btn prev" onclick="prevSlide('Luxeol'); event.stopPropagation();">&#10094;</button>
       <button class="slider-btn next" onclick="nextSlide('Luxeol'); event.stopPropagation();">&#10095;</button>
     </div>
-    <h3>Luxéol Pousse Croissance & Fortification</h3>
+    <h3>Luxeol Pousse Croissance & Fortification</h3>
     <div class="price">💰 450 DH</div>
     <p>Complément pour cheveux, triple action, renforce, fortifie et favorise la pousse.</p>
     <div class="garantie">Garantie 2 ans</div>
@@ -278,36 +278,4 @@
 
 <footer style="text-align:center; padding:15px; background:#fff; margin-top:40px; font-size:14px; color:#555; font-family: 'Arial', sans-serif; font-style:italic;">
   Made with 
-  <span style="color:#e74c3c; font-weight:bold; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.3)';" onmouseout="this.style.transform='scale(1)';">&#10084;</span> 
-  by <strong>Omar</strong>
-</footer>
-
-<script>
-  const sliders={};
-  function showSlide(id,index){
-    const container=document.getElementById(id);
-    const images=container.getElementsByTagName('img');
-    for(let i=0;i<images.length;i++) images[i].classList.remove('active');
-    images[index].classList.add('active');
-    sliders[id]=index;
-  }
-  function prevSlide(id){
-    const container=document.getElementById(id);
-    const images=container.getElementsByTagName('img');
-    let index=sliders[id]!==undefined?sliders[id]:0;
-    index=(index-1+images.length)%images.length;
-    showSlide(id,index);
-  }
-  function nextSlide(id){
-    const container=document.getElementById(id);
-    const images=container.getElementsByTagName('img');
-    let index=sliders[id]!==undefined?sliders[id]:0;
-    index=(index+1)%images.length;
-    showSlide(id,index);
-  }
-
-  ['Babyliss','Demeliss','Philips','RemingtonSlim','RemingtonInnovation','RemingtonMini','RemingtonBoucleur','PhilipsRouge','Luxeol'].forEach(id => showSlide(id,0));
-</script>
-
-</body>
-</html>
+  <span style="color:#
