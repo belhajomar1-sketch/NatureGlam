@@ -12,7 +12,7 @@
   .banner { background:#0b84ff; color:white; text-align:center; padding:10px; font-size:16px; font-weight:bold; }
   .product-container { display:flex; flex-wrap:wrap; max-width:1200px; margin:auto; gap:20px; padding:20px; justify-content:center; }
   .product-images { flex:1 1 400px; display:flex; flex-direction:column; align-items:center; }
-  .product-images img { width:100%; max-width:400px; border-radius:12px; margin-bottom:10px; }
+  .product-images img { width:100%; max-width:400px; border-radius:12px; margin-bottom:10px; cursor:pointer; }
   .slider-btn { background:#0b84ff; color:white; border:none; font-size:18px; padding:5px 10px; cursor:pointer; border-radius:5px; margin:5px; }
   .product-details { flex:1 1 400px; background:#fff; border-radius:15px; padding:20px; box-shadow:0 6px 20px rgba(0,0,0,0.1); }
   .product-details h1 { font-size:24px; margin-bottom:10px; }
@@ -28,53 +28,18 @@
   footer { text-align:center; padding:15px; background:#fff; margin-top:40px; font-size:14px; color:#555; font-family: Arial, sans-serif; font-style:italic; }
 
   /* Section des avis */
-  .testimonials-section {
-    background:#f9f9f9;
-    padding:20px;
-    border-radius:15px;
-    margin-top:20px;
-  }
+  .testimonials-section { background:#f9f9f9; padding:20px; border-radius:15px; margin-top:20px; }
+  .testimonial { display:flex; gap:15px; background:#fff; padding:15px; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.08); margin-bottom:15px; align-items:flex-start; flex-wrap:wrap; }
+  .testimonial img { width:60px; height:60px; object-fit:cover; border-radius:50%; border:2px solid #0b84ff; cursor:pointer; }
+  .testimonial-text { flex:1; font-size:14px; line-height:1.4; }
+  .testimonial-text strong { font-size:15px; }
+  .stars { color:#FFD700; font-size:14px; margin:5px 0; }
+  .testimonial-text img { margin-top:8px; max-width:100%; border-radius:8px; cursor:pointer; }
 
-  .testimonial {
-    display:flex;
-    gap:15px;
-    background:#fff;
-    padding:15px;
-    border-radius:12px;
-    box-shadow:0 4px 10px rgba(0,0,0,0.08);
-    margin-bottom:15px;
-    align-items:flex-start;
-  }
-
-  .testimonial img {
-    width:60px;
-    height:60px;
-    object-fit:cover;
-    border-radius:50%;
-    border:2px solid #0b84ff;
-  }
-
-  .testimonial-text {
-    flex:1;
-    font-size:14px;
-    line-height:1.4;
-  }
-
-  .testimonial-text strong {
-    font-size:15px;
-  }
-
-  .stars {
-    color:#FFD700;
-    font-size:14px;
-    margin:5px 0;
-  }
-
-  .testimonial-text img {
-    margin-top:8px;
-    max-width:100%;
-    border-radius:8px;
-  }
+  /* Lightbox / Modal */
+  .modal { display: none; position: fixed; z-index: 200; padding-top: 60px; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.8); }
+  .modal-content { margin: auto; display: block; max-width: 90%; max-height: 80%; border-radius: 12px; }
+  .modal-close { position: absolute; top: 20px; right: 35px; color: #fff; font-size: 40px; font-weight: bold; cursor: pointer; }
 </style>
 </head>
 <body>
@@ -93,7 +58,7 @@
 <div class="product-container">
 
   <div class="product-images">
-    <img src="Babyliss1.jpg" id="main-img" alt="Babyliss Brosse Soufflante">
+    <img src="Babyliss1.jpg" id="main-img" alt="Babyliss Brosse Soufflante" onclick="openModal(this.src)">
     <div>
       <button class="slider-btn" onclick="prevSlide()">&#10094; Précédent</button>
       <button class="slider-btn" onclick="nextSlide()">Suivant &#10095;</button>
@@ -136,7 +101,6 @@
       Contenu du carton: 4 embouts
     </div>
 
-    <!-- Formulaire de commande -->
     <form action="https://formspree.io/f/xpwnnbzj" method="POST">
       <input type="text" name="Nom" placeholder="Nom" required>
       <input type="text" name="Prénom" placeholder="Prénom" required>
@@ -147,17 +111,15 @@
       <button type="submit" class="submit-btn">📩 Envoyer la commande</button>
     </form>
 
-    <!-- Commander sur WhatsApp -->
     <a class="whatsapp" href="https://wa.me/212674994867" target="_blank">📱 Commander sur WhatsApp</a>
 
     <!-- Section Avis Clients -->
     <div class="section-title">Commentaires client</div>
-
     <div class="testimonials-section">
 
       <!-- Témoignage Selma -->
       <div class="testimonial">
-        <img src="selma.png" alt="Selma">
+        <img src="selma.png" alt="Selma" onclick="openModal(this.src)">
         <div class="testimonial-text">
           <strong>Selma</strong><br>
           <div class="stars">★★★★★</div>
@@ -167,12 +129,12 @@
 
       <!-- Témoignage Fadéla avec images -->
       <div class="testimonial">
-        <img src="61aggJAwnML._SL1600_.jpg" alt="Fadéla">
+        <img src="61aggJAwnML._SL1600_.jpg" alt="Fadéla" onclick="openModal(this.src)">
         <div class="testimonial-text">
           <strong>Fadéla</strong><br>
           <div class="stars">★★★★★</div>
           Très bonne brosse soufflante, après un premier test, elle chauffe bien et la puissance est idéale même pour les cheveux volumineux et bouclés. Bonne première impression. Parfait pour un beau brushing à la maison.
-          <img src="71zcQiMducL._SL1600_.jpg" alt="Image brosse Babyliss">
+          <img src="71zcQiMducL._SL1600_.jpg" alt="Image brosse Babyliss" onclick="openModal(this.src)">
         </div>
       </div>
 
@@ -182,6 +144,18 @@
           <strong>Atika Chellil</strong><br>
           <div class="stars">★★★★★</div>
           Excellente brosse électrique. Elle lisse rapidement les cheveux, les rend doux et brillants. Très facile à utiliser et super résultat.
+        </div>
+      </div>
+
+      <!-- Nouveau Témoignage avec deux images -->
+      <div class="testimonial">
+        <img src="71H-oFyA4+L (1).jpg" alt="Nouvel avis client" onclick="openModal(this.src)">
+        <div class="testimonial-text">
+          <strong>Client(e) satisfait(e)</strong><br>
+          <div class="stars">★★★★★</div>
+          Article conforme à la description tooooooop
+          <img src="71H-oFyA4+L (1).jpg" alt="Image 1" onclick="openModal(this.src)">
+          <img src="61RLhf1I48L.jpg" alt="Image 2" onclick="openModal(this.src)">
         </div>
       </div>
 
@@ -195,12 +169,31 @@
   &copy; 2025 NatureGlam. Tous droits réservés.
 </footer>
 
+<!-- Lightbox modal -->
+<div id="myModal" class="modal">
+  <span class="modal-close" onclick="closeModal()">&times;</span>
+  <img class="modal-content" id="modal-img">
+</div>
+
 <script>
   const images = ["Babyliss1.jpg","Babyliss2.jpg","Babyliss3.jpg","Babyliss4.jpg","Babyliss5.jpg","Babyliss6.jpg"];
   let index = 0;
   function showImage() { document.getElementById("main-img").src = images[index]; }
   function prevSlide() { index = (index-1+images.length)%images.length; showImage(); }
   function nextSlide() { index = (index+1)%images.length; showImage(); }
+
+  // Lightbox functions
+  function openModal(src) {
+    document.getElementById("myModal").style.display = "block";
+    document.getElementById("modal-img").src = src;
+  }
+  function closeModal() {
+    document.getElementById("myModal").style.display = "none";
+  }
+  window.onclick = function(event) {
+    const modal = document.getElementById("myModal");
+    if (event.target == modal) { modal.style.display = "none"; }
+  }
 </script>
 
 </body>
