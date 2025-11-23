@@ -21,7 +21,11 @@
   .whatsapp { display:block; text-decoration:none; background:#25D366; color:white; text-align:center; padding:10px; border-radius:12px; font-size:16px; font-weight:bold; margin-top:15px; transition:0.3s; }
   .whatsapp:hover { background:#1ebe5d; }
   .section-title { font-weight:bold; font-size:16px; margin-top:15px; margin-bottom:5px; }
-  footer { text-align:center; padding:15px; background:#fff; margin-top:40px; font-size:14px; color:#555; font-family: Arial; font-style:italic; }
+  form { display:flex; flex-direction:column; gap:10px; margin-top:15px; }
+  input, textarea { padding:8px; border-radius:8px; border:1px solid #ccc; width:100%; box-sizing:border-box; }
+  button.submit-btn { background:#0b84ff; color:white; border:none; padding:10px; border-radius:10px; font-weight:bold; cursor:pointer; transition:0.3s; }
+  button.submit-btn:hover { background:#0963c6; }
+  footer { text-align:center; padding:15px; background:#fff; margin-top:40px; font-size:14px; color:#555; font-family: Arial, sans-serif; font-style:italic; }
 </style>
 </head>
 <body>
@@ -71,15 +75,26 @@
       Réparation, remplacement ou remboursement pendant 2 ans au titre de la garantie légale.
     </div>
 
+    <!-- Formulaire de commande -->
+    <form action="https://formspree.io/f/xpwnnbzj" method="POST">
+      <input type="text" name="Nom" placeholder="Nom" required>
+      <input type="text" name="Prénom" placeholder="Prénom" required>
+      <input type="text" name="Adresse" placeholder="Adresse" required>
+      <input type="text" name="Ville" placeholder="Ville" required>
+      <input type="tel" name="Téléphone" placeholder="Téléphone" required>
+      <input type="hidden" name="Produit" value="Remington Lisseur Cheveux Innovation">
+      <button type="submit" class="submit-btn">📩 Envoyer la commande</button>
+    </form>
+
+    <!-- Commander sur WhatsApp -->
     <a class="whatsapp" href="https://wa.me/212674994867" target="_blank">📱 Commander sur WhatsApp</a>
   </div>
 
 </div>
 
-<footer style="text-align:center; padding:15px; background:#fff; margin-top:40px; font-size:14px; color:#555; font-family: Arial, sans-serif;">
+<footer>
   &copy; 2025 NatureGlam. Tous droits réservés.
 </footer>
-
 
 <script>
   const images = ["Proremington1.jpg","Proremington2.jpg","Proremington3.jpg","Proremington4.jpg","Proremington5.jpg","Proremington6.jpg","Proremington7.jpg","Proremington8.jpg"];
