@@ -12,13 +12,14 @@
     justify-content: space-between;
     align-items: center;
     background: #fff;
-    padding: 5px 20px;
+    padding: 10px 20px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     position: sticky;
     top: 0;
     z-index: 100;
   }
-  .logo img { height: 50px; max-height: 50px; object-fit: contain; display: block; }
+  .logo img { height: 80px; max-height: 80px; object-fit: contain; display: block; }
+
   .search-help { display: flex; align-items: center; gap: 15px; }
   input[type="text"] { padding:8px; border-radius:8px; border:1px solid #ccc; width:200px; }
   a.help-btn { text-decoration:none; background:#25D366; color:#fff; padding:10px 15px; border-radius:10px; font-weight:bold; transition:0.3s; }
@@ -234,7 +235,7 @@
 
   <!-- Philips Epilateur Rouge -->
   <div class="card">
-    <div class="images" id="PhilipsRouge">
+    <div class="images" id="PhilipsRouge" onclick="window.location.href='PhilipsRouge.html'">
       <img src="PhilipsRouge1.jpg" class="active">
       <img src="PhilipsRouge2.jpg">
       <img src="PhilipsRouge3.jpg">
@@ -256,7 +257,7 @@
 
   <!-- Luxeol -->
   <div class="card">
-    <div class="images" id="Luxeol">
+    <div class="images" id="Luxeol" onclick="window.location.href='Luxeol.html'">
       <img src="luxeol1.jpg" class="active">
       <img src="luxeol2.jpg">
       <img src="luxeol3.jpg">
@@ -279,28 +280,27 @@
 
 </div>
 
-<footer style="text-align:center; padding:15px; background:#fff; margin-top:40px; font-size:14px; color:#555; font-family: 'Arial', sans-serif; font-style:italic;">
-  Made with ❤️ by NatureGlam
+<footer style="text-align:center; padding:15px; background:#fff; margin-top:40px; font-size:14px; color:#555; font-family: Arial, sans-serif;">
+  &copy; 2025 NatureGlam. Tous droits réservés.
 </footer>
 
 <script>
-  const sliders = {};
-  document.querySelectorAll('.images').forEach(slider => {
-    const id = slider.id;
-    sliders[id] = { index:0, images: slider.querySelectorAll('img') };
-    sliders[id].images[0].classList.add('active');
-  });
-
-  function showSlide(id, n){
-    const slider = sliders[id];
-    if(!slider) return;
-    slider.images.forEach(img => img.classList.remove('active'));
-    slider.index = (n + slider.images.length) % slider.images.length;
-    slider.images[slider.index].classList.add('active');
-  }
-
-  function nextSlide(id){ showSlide(id, sliders[id].index +1); }
-  function prevSlide(id){ showSlide(id, sliders[id].index -1); }
+function nextSlide(id){
+  const container=document.getElementById(id);
+  const images=container.getElementsByTagName('img');
+  let activeIndex=-1;
+  for(let i=0;i<images.length;i++){ if(images[i].classList.contains('active')){ activeIndex=i; images[i].classList.remove('active'); break; } }
+  let nextIndex=(activeIndex+1)%images.length;
+  images[nextIndex].classList.add('active');
+}
+function prevSlide(id){
+  const container=document.getElementById(id);
+  const images=container.getElementsByTagName('img');
+  let activeIndex=-1;
+  for(let i=0;i<images.length;i++){ if(images[i].classList.contains('active')){ activeIndex=i; images[i].classList.remove('active'); break; } }
+  let prevIndex=(activeIndex-1+images.length)%images.length;
+  images[prevIndex].classList.add('active');
+}
 </script>
 
 </body>
