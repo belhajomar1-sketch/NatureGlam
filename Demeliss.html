@@ -7,12 +7,12 @@
 <style>
   body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f5f5f5; }
   header { display:flex; justify-content:space-between; align-items:center; background:#fff; padding:10px 20px; box-shadow:0 4px 8px rgba(0,0,0,0.1); position:sticky; top:0; z-index:100; }
-  .logo img { height:80px; object-fit:contain; }
+  .logo img { height:80px; object-fit:contain; cursor:pointer; }
   .header-info { font-weight:bold; color:#0b84ff; font-size:16px; }
   .banner { background:#0b84ff; color:white; text-align:center; padding:10px; font-size:16px; font-weight:bold; }
   .product-container { display:flex; flex-wrap:wrap; max-width:1200px; margin:auto; gap:20px; padding:20px; justify-content:center; }
   .product-images { flex:1 1 400px; display:flex; flex-direction:column; align-items:center; }
-  .product-images img { width:100%; max-width:400px; border-radius:12px; margin-bottom:10px; }
+  .product-images img { width:100%; max-width:400px; border-radius:12px; margin-bottom:10px; cursor:pointer; }
   .slider-btn { background:#0b84ff; color:white; border:none; font-size:18px; padding:5px 10px; cursor:pointer; border-radius:5px; margin:5px; }
   .product-details { flex:1 1 400px; background:#fff; border-radius:15px; padding:20px; box-shadow:0 6px 20px rgba(0,0,0,0.1); }
   .product-details h1 { font-size:24px; margin-bottom:10px; }
@@ -26,12 +26,30 @@
   button.submit-btn { background:#0b84ff; color:white; border:none; padding:10px; border-radius:10px; font-weight:bold; cursor:pointer; transition:0.3s; }
   button.submit-btn:hover { background:#0963c6; }
   footer { text-align:center; padding:15px; background:#fff; margin-top:40px; font-size:14px; color:#555; font-family: Arial, sans-serif; font-style:italic; }
+
+  /* Section des avis */
+  .testimonials-section { background:#f9f9f9; padding:20px; border-radius:15px; margin-top:20px; }
+  .testimonial { display:flex; gap:15px; background:#fff; padding:15px; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.08); margin-bottom:15px; align-items:flex-start; flex-wrap:wrap; }
+  .testimonial img { width:60px; height:60px; object-fit:cover; border-radius:50%; border:2px solid #0b84ff; cursor:pointer; }
+  .testimonial-text { flex:1; font-size:14px; line-height:1.4; }
+  .testimonial-text strong { font-size:15px; }
+  .stars { color:#FFD700; font-size:14px; margin:5px 0; }
+  .testimonial-text img { margin-top:8px; max-width:100%; border-radius:8px; cursor:pointer; }
+
+  /* Lightbox / Modal */
+  .modal { display: none; position: fixed; z-index: 200; padding-top: 60px; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.8); }
+  .modal-content { margin: auto; display: block; max-width: 90%; max-height: 80%; border-radius: 12px; }
+  .modal-close { position: absolute; top: 20px; right: 35px; color: #fff; font-size: 40px; font-weight: bold; cursor: pointer; }
 </style>
 </head>
 <body>
 
 <header>
-  <div class="logo"><img src="nov. 2025, 02_24_43.png" alt="NatureGlam Logo"></div>
+  <div class="logo">
+    <a href="index.html">
+      <img src="nov. 2025, 02_24_43.png" alt="NatureGlam Logo">
+    </a>
+  </div>
   <div class="header-info">Retour gratuit</div>
 </header>
 
@@ -40,7 +58,7 @@
 <div class="product-container">
 
   <div class="product-images">
-    <img src="Demeliss1.jpg" id="main-img" alt="Demeliss Gold Lisseur">
+    <img src="Demeliss1.jpg" id="main-img" alt="Demeliss Gold Lisseur" onclick="openModal(this.src)">
     <div>
       <button class="slider-btn" onclick="prevSlide()">&#10094; Précédent</button>
       <button class="slider-btn" onclick="nextSlide()">Suivant &#10095;</button>
@@ -89,13 +107,73 @@
 
     <!-- Commander sur WhatsApp -->
     <a class="whatsapp" href="https://wa.me/212674994867" target="_blank">📱 Commander sur WhatsApp</a>
-  </div>
 
-</div>
+    <!-- Section Avis Clients -->
+    <div class="section-title">Commentaires client</div>
+    <div class="testimonials-section">
+
+      <!-- Témoignage 1 -->
+      <div class="testimonial">
+        <img src="51uqOydCMWL.jpeg" alt="Avis client" onclick="openModal(this.src)">
+        <div class="testimonial-text">
+          <strong>Naima</strong><br>
+          <div class="stars">★★★★★</div>
+          Lisse très bien même en un passage, attention à ne pas mettre vos doigt derrière la ligne blanche sinon ça brule. Lisseur mis à 190 degré et en un passage tout était lisse.
+        </div>
+      </div>
+
+      <!-- Témoignage 2 -->
+      <div class="testimonial">
+        <img src="710jtfJv--L.jpeg" alt="Avis client" onclick="openModal(this.src)">
+        <div class="testimonial-text">
+          <strong>Samira</strong><br>
+          <div class="stars">★★★★★</div>
+          Je souhaitais un lisseur pour remplacer mon GHD, détruis par mes enfants à force de tomber, et je voulais pas mettre 150 à 200e. Je suis ravie de mon achat. Longueur de fils + que correct, léger en main, ne tire pas les cheveux.
+        </div>
+      </div>
+
+      <!-- Témoignage texte 1 -->
+      <div class="testimonial">
+        <div class="testimonial-text">
+          <strong>Fatima Zahra</strong><br>
+          <div class="stars">★★★★★</div>
+          Idéal pour coupe au carré. Sur cheveux type coupe au carré, assez court (au niveau du menton). Il est parfait car les plaques ne sont pas trop larges, ce qui permet de ne pas se brûler. Il lisse très bien, je l'utilise sur cheveux secs à 150° et j'obtiens un beau lissage type brushing comme chez le coiffeur. Et en plus, il est très facile d'utilisation, sachant que c'est mon 1er lisseur.
+        </div>
+      </div>
+
+      <!-- Témoignage texte 2 -->
+      <div class="testimonial">
+        <div class="testimonial-text">
+          <strong>Laila</strong><br>
+          <div class="stars">★★★★★</div>
+          Vraiment bien pour le prix. Il lisse bien sûr les cheveux fins et bouclés.
+        </div>
+      </div>
+
+      <!-- Témoignage texte 3 -->
+      <div class="testimonial">
+        <div class="testimonial-text">
+          <strong>Souad</strong><br>
+          <div class="stars">★★★★★</div>
+          Super lisseur, lisse les cheveux comme chez le coiffeur, bonne qualité. En moins de 2 min le lisseur est déjà chaud, plusieurs choix de température, facile d'utilisation, pas lourd. Bon rapport qualité prix, je recommande vraiment.
+        </div>
+      </div>
+
+    </div> <!-- Fin testimonials-section -->
+
+  </div> <!-- Fin product-details -->
+
+</div> <!-- Fin product-container -->
 
 <footer>
   &copy; 2025 NatureGlam. Tous droits réservés.
 </footer>
+
+<!-- Lightbox modal -->
+<div id="myModal" class="modal">
+  <span class="modal-close" onclick="closeModal()">&times;</span>
+  <img class="modal-content" id="modal-img">
+</div>
 
 <script>
   const images = ["Demeliss1.jpg","Demeliss2.jpg","Demeliss3.jpg","Demeliss4.jpg","Demeliss5.jpg","Demeliss6.jpg","Demeliss7.jpg"];
@@ -103,6 +181,19 @@
   function showImage() { document.getElementById("main-img").src = images[index]; }
   function prevSlide() { index = (index-1+images.length)%images.length; showImage(); }
   function nextSlide() { index = (index+1)%images.length; showImage(); }
+
+  // Lightbox functions
+  function openModal(src) {
+    document.getElementById("myModal").style.display = "block";
+    document.getElementById("modal-img").src = src;
+  }
+  function closeModal() {
+    document.getElementById("myModal").style.display = "none";
+  }
+  window.onclick = function(event) {
+    const modal = document.getElementById("myModal");
+    if (event.target == modal) { modal.style.display = "none"; }
+  }
 </script>
 
 </body>
