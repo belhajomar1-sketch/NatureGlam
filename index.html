@@ -278,7 +278,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 360px;
+    min-height: 380px;
     position: relative;
     transition: 0.15s ease;
   }
@@ -363,6 +363,24 @@
     margin-bottom: 6px;
   }
 
+  /* ✅ Badges produit : livraison + paiement */
+  .product-badges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px;
+    margin-bottom: 6px;
+  }
+
+  .product-badges span {
+    font-size: 11px;
+    padding: 3px 7px;
+    border-radius: 999px;
+    background: #ecfdf5;
+    color: #065f46;
+    border: 1px solid #a7f3d0;
+  }
+
   .btn-container {
     display: flex;
     flex-direction: column;
@@ -403,11 +421,61 @@
     background: #1ebe5d;
   }
 
+  /* ⭐ Section avis */
+  .reviews-section {
+    max-width: 1200px;
+    margin: 8px auto 20px;
+    padding: 0 16px;
+  }
+
+  .reviews-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+
+  .reviews-subtitle {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+
+  .reviews-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .review-card {
+    flex: 1 1 260px;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 10px 12px;
+    box-shadow: 0 4px 12px rgba(15,23,42,0.06);
+    font-size: 12px;
+  }
+
+  .review-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4px;
+    font-weight: 600;
+  }
+
+  .review-stars {
+    color: #f59e0b;
+    font-size: 12px;
+  }
+
+  .review-text {
+    color: #4b5563;
+    line-height: 1.5;
+  }
+
   footer {
     text-align: center;
     padding: 12px;
     background: #ffffff;
-    margin-top: 20px;
     font-size: 12px;
     color: #6b7280;
   }
@@ -515,6 +583,10 @@
     </div>
     <h3>Babyliss Brosse Soufflante 1200W</h3>
     <div class="price">💰 800 DH <span>/ paiement à la livraison</span></div>
+    <div class="product-badges">
+      <span>🚚 Livraison gratuite</span>
+      <span>💳 Paiement à la livraison</span>
+    </div>
     <p>Brosse soufflante 1200W avec plusieurs embouts pour un brushing rapide et facile à domicile.</p>
     <div class="garantie">Garantie 2 ans</div>
     <div class="btn-container">
@@ -538,6 +610,10 @@
     </div>
     <h3>Demeliss SAINT ALGUE Lisseur GOLD</h3>
     <div class="price">💰 500 DH <span>/ idéal pour lissage quotidien</span></div>
+    <div class="product-badges">
+      <span>🚚 Livraison gratuite</span>
+      <span>💳 Paiement à la livraison</span>
+    </div>
     <p>Lissage dès la racine, plaques fines en céramique, température réglable de 150°C à 230°C.</p>
     <div class="garantie">Garantie 2 ans</div>
     <div class="btn-container">
@@ -560,6 +636,10 @@
     </div>
     <h3>Philips Satinelle Essential BRE224/00</h3>
     <div class="price">💰 450 DH <span>/ épilation en douceur</span></div>
+    <div class="product-badges">
+      <span>🚚 Livraison gratuite</span>
+      <span>💳 Paiement à la livraison</span>
+    </div>
     <p>Épilateur compact filaire, efficace et doux pour toutes les zones du corps.</p>
     <div class="garantie">Garantie 2 ans</div>
     <div class="btn-container">
@@ -581,6 +661,10 @@
     </div>
     <h3>Remington Lisseur Cheveux Ceramic Slim S1510</h3>
     <div class="price">💰 500 DH</div>
+    <div class="product-badges">
+      <span>🚚 Livraison gratuite</span>
+      <span>💳 Paiement à la livraison</span>
+    </div>
     <p>Revêtement céramique tourmaline antistatique, chaleur homogène et brillance, glisse facile.</p>
     <div class="garantie">Garantie 2 ans</div>
     <div class="btn-container">
@@ -605,6 +689,10 @@
     </div>
     <h3>Remington Lisseur Cheveux Keratin Therapy</h3>
     <div class="price">💰 850 DH</div>
+    <div class="product-badges">
+      <span>🚚 Livraison gratuite</span>
+      <span>💳 Paiement à la livraison</span>
+    </div>
     <p>Fer à lisser avec soin Kératine & Huile d'Amande, plaques céramique, écran LCD, température 160-230°C.</p>
     <div class="garantie">Garantie 2 ans</div>
     <div class="btn-container">
@@ -625,6 +713,10 @@
     </div>
     <h3>Remington Mini Lisseur Pratique On The Go</h3>
     <div class="price">💰 350 DH</div>
+    <div class="product-badges">
+      <span>🚚 Livraison gratuite</span>
+      <span>💳 Paiement à la livraison</span>
+    </div>
     <p>Lisseur compact pour voyager, plaques céramique, chauffe rapide, idéal pour cheveux courts ou fins.</p>
     <div class="garantie">Garantie 2 ans</div>
     <div class="btn-container">
@@ -644,6 +736,10 @@
     </div>
     <h3>Remington Boucleur à cheveux Conique 13-25mm</h3>
     <div class="price">💰 400 DH</div>
+    <div class="product-badges">
+      <span>🚚 Livraison gratuite</span>
+      <span>💳 Paiement à la livraison</span>
+    </div>
     <p>Boucleur professionnel, revêtement céramique, chaleur réglable, pour ondulations naturelles.</p>
     <div class="garantie">Garantie 2 ans</div>
     <div class="btn-container">
@@ -666,6 +762,10 @@
     </div>
     <h3>Philips Epilateur Satinelle Essentiel BRE225/00</h3>
     <div class="price">💰 550 DH</div>
+    <div class="product-badges">
+      <span>🚚 Livraison gratuite</span>
+      <span>💳 Paiement à la livraison</span>
+    </div>
     <p>Épilateur avec 21 embouts et 2 réglages de vitesse pour un confort optimal.</p>
     <div class="garantie">Garantie 2 ans</div>
     <div class="btn-container">
@@ -689,6 +789,10 @@
     </div>
     <h3>Luxeol Pousse Croissance & Fortification</h3>
     <div class="price">💰 450 DH</div>
+    <div class="product-badges">
+      <span>🚚 Livraison gratuite</span>
+      <span>💳 Paiement à la livraison</span>
+    </div>
     <p>Complément pour cheveux, triple action : renforce, fortifie et favorise la pousse.</p>
     <div class="garantie">Produit d’origine européenne</div>
     <div class="btn-container">
@@ -698,6 +802,41 @@
   </div>
 
 </div>
+
+<!-- ⭐ AVIS CLIENTES -->
+<section class="reviews-section">
+  <div class="reviews-title">Avis de nos clientes</div>
+  <div class="reviews-subtitle">Elles ont testé NatureGlam et partagent leur expérience.</div>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-header">
+        <span>Samira – Casablanca</span>
+        <span class="review-stars">★★★★★</span>
+      </div>
+      <div class="review-text">
+        J’étais sceptique au début, mais cette brosse Babyliss a changé ma routine. En 10 minutes j’ai un brushing propre comme chez le coiffeur. Livraison rapide et paiement à la livraison, rien à dire 👌
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="review-header">
+        <span>Imane – Rabat</span>
+        <span class="review-stars">★★★★★</span>
+      </div>
+      <div class="review-text">
+        Produit 100% original, bien emballé. J’ai reçu exactement ce qui est sur les photos du site. Je l’utilise presque tous les jours et mes cheveux ne sont pas abîmés.
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="review-header">
+        <span>Nadia – Marrakech</span>
+        <span class="review-stars">★★★★☆</span>
+      </div>
+      <div class="review-text">
+        Franchement pratique pour les mamans qui n’ont pas le temps. Je me coiffe et je coiffe ma fille à la maison. J’ai beaucoup aimé le sérieux de NatureGlam.
+      </div>
+    </div>
+  </div>
+</section>
 
 <footer>
   &copy; 2025 NatureGlam. Tous droits réservés.
