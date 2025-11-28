@@ -7,9 +7,34 @@
 <meta name="description" content="Remington Lisseur Cheveux Soin Kératine & Huile d'amande Protect S8540. Plaques céramiques, écran LCD, 10 réglages de température 150-230°C. Livraison gratuite et paiement à la livraison partout au Maroc.">
 <style>
   body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f5f5f5; }
-  header { display:flex; justify-content:space-between; align-items:center; background:#fff; padding:10px 20px; box-shadow:0 4px 8px rgba(0,0,0,0.1); position:sticky; top:0; z-index:100; }
+
+  header {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:#fff;
+    padding:10px 20px;
+    box-shadow:0 4px 8px rgba(0,0,0,0.1);
+    position:sticky;
+    top:0;
+    z-index:100;
+  }
   .logo img { height:80px; object-fit:contain; cursor:pointer; }
-  .header-info { font-weight:bold; color:#0b84ff; font-size:16px; }
+  .header-info { font-weight:bold; color:#0b84ff; font-size:16px; white-space:nowrap; }
+
+  /* 🔹 Slider de messages au milieu du header (même style que Babyliss) */
+  .header-slider {
+    flex:1;
+    text-align:center;
+    padding:0 20px;
+    font-size:14px;
+    font-weight:bold;
+    color:#0b84ff;
+  }
+  .header-slider span {
+    display:inline-block;
+  }
+
   .banner { background:#0b84ff; color:white; text-align:center; padding:10px; font-size:16px; font-weight:bold; }
 
   .product-container { display:flex; flex-wrap:wrap; max-width:1200px; margin:auto; gap:20px; padding:20px; justify-content:center; }
@@ -28,6 +53,33 @@
 
   .desc { font-size:14px; line-height:1.5; margin-bottom:10px; }
   .section-title { font-weight:bold; font-size:16px; margin-top:15px; margin-bottom:5px; }
+
+  /* Bloc récapitulatif prix façon Amazon (même classes que Babyliss) */
+  .price-summary {
+    background:#f9fafb;
+    border-radius:10px;
+    padding:10px 12px;
+    margin-top:10px;
+    border:1px solid #e5e7eb;
+    font-size:14px;
+  }
+  .price-summary-title {
+    font-weight:bold;
+    margin-bottom:6px;
+  }
+  .summary-row {
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:4px;
+  }
+  .summary-row.summary-total {
+    margin-top:6px;
+    font-weight:bold;
+    font-size:15px;
+  }
+  .summary-discount-positive {
+    color:#16a085;
+  }
 
   form { display:flex; flex-direction:column; gap:10px; margin-top:15px; }
   input, textarea { padding:8px; border-radius:8px; border:1px solid #ccc; width:100%; box-sizing:border-box; }
@@ -51,11 +103,25 @@
   .modal-content { margin: auto; display: block; max-width: 90%; max-height: 80%; border-radius: 12px; }
   .modal-close { position: absolute; top: 20px; right: 35px; color: #fff; font-size: 40px; font-weight: bold; cursor: pointer; }
 
-  /* Sticky CTA cachée sur desktop */
+  /* 🔹 cacher la sticky bar par défaut (desktop) */
   .sticky-cta { display:none; }
 
-  /* Sticky CTA mobile */
+  /* Responsive header + sticky CTA mobile (comme Babyliss) */
   @media (max-width: 768px) {
+    header {
+      flex-wrap:wrap;
+      gap:8px;
+    }
+    .header-slider {
+      order:3;
+      width:100%;
+      padding:0;
+      font-size:13px;
+    }
+    .header-info {
+      font-size:14px;
+    }
+
     .sticky-cta {
       position: fixed;
       bottom: 0;
@@ -95,6 +161,12 @@
       <img src="nov. 2025, 02_24_43.png" alt="NatureGlam Logo">
     </a>
   </div>
+
+  <!-- 🔹 Slide de messages au milieu -->
+  <div class="header-slider">
+    <span id="header-slide-text">🚚 Livraison gratuite partout au Maroc</span>
+  </div>
+
   <div class="header-info">Retour gratuit</div>
 </header>
 
@@ -113,11 +185,11 @@
   <div class="product-details">
     <h1>Remington Lisseur Cheveux Soin Kératine & Huile d'amande S8540</h1>
 
-    <!-- Prix + promo + rassurance -->
+    <!-- Prix + promo "de base" -->
     <div class="price">
       <span class="old-price">999 DH</span>
-      <span class="new-price">600 DH</span>
-      <span class="promo">(-15% promo limitée)</span>
+      <span class="new-price" id="display-price">600 DH</span>
+      <span class="promo">(-40% promo limitée)</span>
     </div>
     <div class="reassurance">
       ✅ Paiement à la livraison &nbsp; | &nbsp; ✅ Produit 100% original Remington
@@ -168,6 +240,43 @@
       <input type="text" name="Ville" placeholder="Ville" required>
       <input type="tel" name="Téléphone" placeholder="Téléphone" required>
       <input type="hidden" name="Produit" value="Remington Lisseur Soin Kératine & Huile d'amande S8540">
+
+      <!-- Code promo -5% (même système que Babyliss) -->
+      <div class="section-title">Code promo</div>
+      <div class="desc">
+        <input type="text" id="coupon-input" placeholder="Code promo (optionnel)">
+        <button type="button" class="submit-btn" style="margin-top:8px; padding:6px 10px; font-size:14px;" onclick="applyCoupon()">
+          Appliquer le code
+        </button>
+        <div id="coupon-message" style="font-size:13px; margin-top:5px;"></div>
+      </div>
+
+      <!-- Récapitulatif du prix façon Amazon -->
+      <div class="price-summary">
+        <div class="price-summary-title">Récapitulatif du prix</div>
+        <div class="summary-row">
+          <span>Article :</span>
+          <span id="summary-article">600 DH</span>
+        </div>
+        <div class="summary-row">
+          <span>Remise :</span>
+          <span id="summary-discount">0 DH</span>
+        </div>
+        <div class="summary-row">
+          <span>Livraison :</span>
+          <span>0 DH</span>
+        </div>
+        <div class="summary-row summary-total">
+          <span>Montant total :</span>
+          <span id="summary-total">600 DH</span>
+        </div>
+      </div>
+
+      <!-- Champs cachés envoyés à Formspree -->
+      <input type="hidden" name="Prix_initial" id="prix-initial" value="600">
+      <input type="hidden" name="Prix_apres_remise" id="prix-remise" value="600">
+      <input type="hidden" name="Code_promo" id="code-promo" value="">
+
       <button type="submit" class="submit-btn">📩 Envoyer la commande</button>
     </form>
 
@@ -246,6 +355,7 @@
 </div>
 
 <script>
+  /* Slider images produit */
   const images = [
     "keratinprotect.jpeg",
     "keratinprotect1.jpeg",
@@ -254,22 +364,11 @@
     "keratinprotect4.jpeg"
   ];
   let index = 0;
+  function showImage() { document.getElementById("main-img").src = images[index]; }
+  function prevSlide() { index = (index-1+images.length)%images.length; showImage(); }
+  function nextSlide() { index = (index+1)%images.length; showImage(); }
 
-  function showImage() {
-    document.getElementById("main-img").src = images[index];
-  }
-
-  function prevSlide() {
-    index = (index - 1 + images.length) % images.length;
-    showImage();
-  }
-
-  function nextSlide() {
-    index = (index + 1) % images.length;
-    showImage();
-  }
-
-  // Lightbox functions
+  /* Lightbox */
   function openModal(src) {
     document.getElementById("myModal").style.display = "block";
     document.getElementById("modal-img").src = src;
@@ -281,6 +380,86 @@
     const modal = document.getElementById("myModal");
     if (event.target == modal) { modal.style.display = "none"; }
   }
+
+  /* 🔹 Code promo -5% (NG5) – même logique que Babyliss */
+  const PRIX_PRODUIT = 600;       // prix actuel du lisseur en DH
+  const CODE_PROMO = "NG5";       // même code que pour Babyliss
+  const REMISE_POURCENT = 5;      // 5%
+
+  function applyCoupon() {
+    const input = document.getElementById('coupon-input');
+    const message = document.getElementById('coupon-message');
+    const displayPrice = document.getElementById('display-price');
+    const prixInitialField = document.getElementById('prix-initial');
+    const prixRemiseField = document.getElementById('prix-remise');
+    const codeField = document.getElementById('code-promo');
+
+    const summaryArticle = document.getElementById('summary-article');
+    const summaryDiscount = document.getElementById('summary-discount');
+    const summaryTotal = document.getElementById('summary-total');
+
+    const code = (input.value || "").trim().toUpperCase();
+
+    // Prix de base
+    prixInitialField.value = PRIX_PRODUIT;
+    summaryArticle.textContent = PRIX_PRODUIT + " DH";
+
+    if (!code) {
+      // aucun code → retour au prix normal
+      displayPrice.textContent = PRIX_PRODUIT + " DH";
+      prixRemiseField.value = PRIX_PRODUIT;
+      codeField.value = "";
+      message.textContent = "";
+      summaryDiscount.textContent = "0 DH";
+      summaryDiscount.classList.remove('summary-discount-positive');
+      summaryTotal.textContent = PRIX_PRODUIT + " DH";
+      return;
+    }
+
+    if (code === CODE_PROMO) {
+      const prixRemise = Math.round(PRIX_PRODUIT * (100 - REMISE_POURCENT) / 100);
+      const montantRemise = PRIX_PRODUIT - prixRemise;
+
+      displayPrice.textContent = prixRemise + " DH (au lieu de " + PRIX_PRODUIT + " DH avec code " + CODE_PROMO + ")";
+      prixRemiseField.value = prixRemise;
+      codeField.value = code;
+
+      message.textContent = "✅ Code promo appliqué : -" + REMISE_POURCENT + "% (" + montantRemise + " DH de réduction)";
+      message.style.color = "#16a085";
+
+      summaryDiscount.textContent = "- " + montantRemise + " DH";
+      summaryDiscount.classList.add('summary-discount-positive');
+      summaryTotal.textContent = prixRemise + " DH";
+    } else {
+      displayPrice.textContent = PRIX_PRODUIT + " DH";
+      prixRemiseField.value = PRIX_PRODUIT;
+      codeField.value = "";
+
+      message.textContent = "❌ Code promo invalide";
+      message.style.color = "#dc2626";
+
+      summaryDiscount.textContent = "0 DH";
+      summaryDiscount.classList.remove('summary-discount-positive');
+      summaryTotal.textContent = PRIX_PRODUIT + " DH";
+    }
+  }
+
+  /* 🔹 Slider de messages dans le header (copié de Babyliss) */
+  const headerMessages = [
+    "🚚 Livraison gratuite partout au Maroc",
+    "💳 Paiement à la livraison, sans avance",
+    "✅ Produits 100% authentiques",
+    "📞 Service client WhatsApp : 06 74 99 48 67"
+  ];
+  let headerIndex = 0;
+  const headerTextEl = document.getElementById("header-slide-text");
+
+  function rotateHeaderMessage() {
+    headerIndex = (headerIndex + 1) % headerMessages.length;
+    headerTextEl.textContent = headerMessages[headerIndex];
+  }
+
+  setInterval(rotateHeaderMessage, 4000); // change toutes les 4 secondes
 </script>
 
 </body>

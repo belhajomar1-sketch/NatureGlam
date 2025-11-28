@@ -27,7 +27,7 @@
     color: var(--text);
   }
 
-  /* HEADER – compact + contraste + logo visible */
+  /* HEADER – avec slider de messages */
   header {
     display: flex;
     justify-content: space-between;
@@ -38,6 +38,7 @@
     position: sticky;
     top: 0;
     z-index: 100;
+    gap: 10px;
   }
 
   .logo {
@@ -52,6 +53,21 @@
     max-height: 70px;
     object-fit: contain;
     display: block;
+  }
+
+  /* 🔹 Slider de messages au milieu du header */
+  .header-slider {
+    flex: 1;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+    color: #0b84ff;
+    padding: 0 8px;
+    min-width: 0;
+  }
+  .header-slider span {
+    display: inline-block;
+    white-space: nowrap;
   }
 
   .search-help {
@@ -489,10 +505,23 @@
 
   @media (max-width: 700px) {
     header {
-      flex-direction: column;
+      flex-wrap: wrap;
       align-items: flex-start;
-      gap: 6px;
     }
+
+    .logo {
+      margin-bottom: 4px;
+    }
+
+    .header-slider {
+      order: 3;
+      width: 100%;
+      text-align: left;
+      padding: 4px 0 0 2px;
+      font-size: 12px;
+      white-space: normal;
+    }
+
     .search-help {
       width: 100%;
       justify-content: space-between;
@@ -528,6 +557,12 @@
   <div class="logo">
     <img src="logo.png" alt="NatureGlam Logo">
   </div>
+
+  <!-- 🔹 Slider de messages au milieu -->
+  <div class="header-slider">
+    <span id="header-slide-text">🚚 Livraison gratuite partout au Maroc</span>
+  </div>
+
   <div class="search-help">
     <input type="text" id="search-input" class="search-input" placeholder="Rechercher un article...">
     <a class="help-btn" href="https://wa.me/212674994867" target="_blank">
@@ -895,7 +930,7 @@ function prevSlide(id){
     }
   }
   let prevIndex = (activeIndex - 1 + images.length) % images.length;
-  images[prevIndex].add('active');
+  images[prevIndex].classList.add('active');
 }
 
 /* FILTRE CATEGORIES + RECHERCHE */
@@ -930,6 +965,24 @@ function applyFilters() {
     card.style.display = (matchCategory && matchSearch) ? '' : 'none';
   });
 }
+
+/* 🔹 Slider de messages dans le header */
+const headerMessages = [
+  "🚚 Livraison gratuite partout au Maroc",
+  "💳 Paiement à la livraison, sans avance",
+  "✅ Produits 100% authentiques",
+  "📞 Service client WhatsApp : 06 74 99 48 67"
+];
+
+let headerIndex = 0;
+const headerTextEl = document.getElementById("header-slide-text");
+
+function rotateHeaderMessage() {
+  headerIndex = (headerIndex + 1) % headerMessages.length;
+  headerTextEl.textContent = headerMessages[headerIndex];
+}
+
+setInterval(rotateHeaderMessage, 4000); // change toutes les 4s
 </script>
 
 </body>
