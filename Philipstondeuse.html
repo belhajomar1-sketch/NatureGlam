@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Philips Tondeuse Essentiel Bikini BRT383/15 🌸 - NatureGlam</title>
+<meta name="description" content="Philips Tondeuse Essentiel bikini BRT383/15, idéale pour raser et styliser la zone bikini en douceur. Livraison gratuite et paiement à la livraison partout au Maroc.">
+
+<style>
+  body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f5f5f5; }
+  header { display:flex; justify-content:space-between; align-items:center; background:#fff; padding:10px 20px; box-shadow:0 4px 8px rgba(0,0,0,0.1); position:sticky; top:0; z-index:100; }
+  .logo img { height:80px; object-fit:contain; cursor:pointer; }
+  .header-info { font-weight:bold; color:#0b84ff; font-size:16px; }
+  .banner { background:#0b84ff; color:white; text-align:center; padding:10px; font-size:16px; font-weight:bold; }
+  .product-container { display:flex; flex-wrap:wrap; max-width:1200px; margin:auto; gap:20px; padding:20px; justify-content:center; }
+  .product-images { flex:1 1 400px; display:flex; flex-direction:column; align-items:center; }
+  .product-images img { width:100%; max-width:400px; border-radius:12px; margin-bottom:10px; cursor:pointer; }
+  .slider-btn { background:#0b84ff; color:white; border:none; font-size:18px; padding:5px 10px; cursor:pointer; border-radius:5px; margin:5px; }
+  .product-details { flex:1 1 400px; background:#fff; border-radius:15px; padding:20px; box-shadow:0 6px 20px rgba(0,0,0,0.1); }
+  .product-details h1 { font-size:24px; margin-bottom:10px; }
+
+  .price { margin:10px 0; }
+  .old-price { font-size:14px; color:#999; text-decoration:line-through; }
+  .new-price { font-size:22px; color:#0b84ff; font-weight:bold; margin-left:8px; }
+  .promo { margin-left:8px; color:#18a34a; font-size:14px; }
+  .reassurance { margin:8px 0; font-size:14px; color:#333; }
+
+  .desc { font-size:14px; line-height:1.5; margin-bottom:10px; }
+  .whatsapp { display:block; text-decoration:none; background:#25D366; color:white; text-align:center; padding:10px; border-radius:12px; font-size:16px; font-weight:bold; margin-top:15px; transition:0.3s; }
+  .whatsapp:hover { background:#1ebe5d; }
+  .section-title { font-weight:bold; font-size:16px; margin-top:15px; margin-bottom:5px; }
+
+  form { display:flex; flex-direction:column; gap:10px; margin-top:15px; }
+  input, textarea { padding:8px; border-radius:8px; border:1px solid #ccc; width:100%; box-sizing:border-box; }
+  button.submit-btn { background:#0b84ff; color:white; border:none; padding:10px; border-radius:10px; font-weight:bold; cursor:pointer; transition:0.3s; }
+  button.submit-btn:hover { background:#0963c6; }
+
+  footer { text-align:center; padding:15px; background:#fff; margin-top:40px; font-size:14px; color:#555; font-family: Arial, sans-serif; font-style:italic; }
+
+  /* Section des avis */
+  .testimonials-section { background:#f9f9f9; padding:20px; border-radius:15px; margin-top:20px; }
+  .testimonial { display:flex; gap:15px; background:#fff; padding:15px; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.08); margin-bottom:15px; align-items:flex-start; flex-wrap:wrap; }
+  .testimonial-text { flex:1; font-size:14px; line-height:1.4; }
+  .testimonial-text strong { font-size:15px; }
+  .stars { color:#FFD700; font-size:14px; margin:5px 0; }
+
+  /* Lightbox / Modal */
+  .modal { display: none; position: fixed; z-index: 200; padding-top: 60px; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.8); }
+  .modal-content { margin: auto; display: block; max-width: 90%; max-height: 80%; border-radius: 12px; }
+  .modal-close { position: absolute; top: 20px; right: 35px; color: #fff; font-size: 40px; font-weight: bold; cursor: pointer; }
+
+  /* cacher sticky bar sur desktop */
+  .sticky-cta { display:none; }
+
+  /* Sticky CTA mobile */
+  @media (max-width: 768px) {
+    .sticky-cta {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #ffffff;
+      box-shadow: 0 -3px 10px rgba(0,0,0,0.1);
+      padding: 10px 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 150;
+    }
+    .sticky-cta-price {
+      font-weight: bold;
+      color: #0b84ff;
+      font-size: 16px;
+    }
+    .sticky-cta-btn {
+      background:#25D366;
+      color:#fff;
+      border:none;
+      padding:8px 12px;
+      border-radius:8px;
+      font-size:14px;
+      font-weight:bold;
+      text-decoration:none;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <a href="index.html">
+      <img src="nov. 2025, 02_24_43.png" alt="NatureGlam Logo">
+    </a>
+  </div>
+  <div class="header-info">Retour gratuit</div>
+</header>
+
+<div class="banner">🚚 Livraison gratuite partout au Maroc • Paiement à la livraison</div>
+
+<div class="product-container">
+
+  <div class="product-images">
+    <img src="Philipstondeuse.jpeg" id="main-img" alt="Philips Tondeuse Essentiel bikini" onclick="openModal(this.src)">
+    <div>
+      <button class="slider-btn" onclick="prevSlide()">&#10094; Précédent</button>
+      <button class="slider-btn" onclick="nextSlide()">Suivant &#10095;</button>
+    </div>
+  </div>
+
+  <div class="product-details">
+    <h1>Philips Tondeuse Essentiel bikini BRT383/15</h1>
+
+    <div class="price">
+      <span class="old-price">599 DH</span>
+      <span class="new-price">500 DH</span>
+      <span class="promo">(-17% promo limitée)</span>
+    </div>
+
+    <div class="reassurance">
+      ✅ Paiement à la livraison &nbsp; | &nbsp; ✅ Produit 100% original Philips
+    </div>
+
+    <div class="desc">
+      Marque: Philips<br>
+      Modèle: Tondeuse Essentiel bikini BRT383/15<br>
+      Zone : Bikini et zones sensibles<br>
+      Type : Tondeuse électrique sans douleur<br>
+      Accessoires : Sabots + tête de tondeuse + pochette<br>
+      Utilisation : Rase, taille et stylise la zone bikini<br>
+      Entretien : Tête lavable
+    </div>
+
+    <div class="section-title">À propos de cet article</div>
+    <div class="desc">
+      • Spéciale zones sensibles, douce et précise.<br>
+      • Lames anti-irritation pour éviter rougeurs et coupures.<br>
+      • Idéale pour tailler, raser ou styliser le bikini.<br>
+      • Plusieurs longueurs de coupe grâce aux sabots fournis.<br>
+      • Format compact parfait pour le voyage.<br>
+      • Marque premium : Philips.
+    </div>
+
+    <div class="section-title">Pourquoi c’est sans risque ?</div>
+    <div class="desc">
+      ✅ Retour possible pendant <strong>14 jours</strong><br>
+      ✅ Produit original et neuf<br>
+      ✅ Assistance WhatsApp
+    </div>
+
+    <div class="section-title">Politique de retour (détails)</div>
+    <div class="desc">
+      Retours sous 14 jours (emballage non ouvert pour raison d'hygiène).<br>
+      Fabricant : Philips — Référence : BRT383/15.
+    </div>
+
+    <form action="https://formspree.io/f/xpwnnbzj" method="POST">
+      <input type="text" name="Nom" placeholder="Nom" required>
+      <input type="text" name="Prénom" placeholder="Prénom" required>
+      <input type="text" name="Adresse" placeholder="Adresse" required>
+      <input type="text" name="Ville" placeholder="Ville" required>
+      <input type="tel" name="Téléphone" placeholder="Téléphone" required>
+      <input type="hidden" name="Produit" value="Philips Tondeuse Essentiel bikini BRT383/15">
+      <button type="submit" class="submit-btn">📩 Envoyer la commande</button>
+    </form>
+
+    <a class="whatsapp" href="https://wa.me/212674994867" target="_blank">📱 Commander sur WhatsApp</a>
+
+    <!-- AVIS CLIENTS NON TRAFIQUÉS -->
+    <div class="section-title">Avis sur ce modèle</div>
+    <div class="desc">Avis inspirés de retours réels sur le modèle Philips BRT383/15.</div>
+
+    <div class="testimonials-section">
+
+      <div class="testimonial">
+        <div class="testimonial-text">
+          <strong>Khadija – 32 ans</strong><br>
+          <div class="stars">★★★★★</div>
+          Très pratique pour la zone bikini, ne fait pas mal et très simple à utiliser même pour une première fois.
+        </div>
+      </div>
+
+      <div class="testimonial">
+        <div class="testimonial-text">
+          <strong>Salma – 27 ans</strong><br>
+          <div class="stars">★★★★★</div>
+          Utilisation rapide et nette. Coupe bien et ne chauffe pas. Je suis satisfaite.
+        </div>
+      </div>
+
+      <div class="testimonial">
+        <div class="testimonial-text">
+          <strong>Cliente NatureGlam</strong><br>
+          <div class="stars">★★★★☆</div>
+          Très bonne tondeuse, parfaite pour l’entretien. J’aurais juste aimé un sabot supplémentaire.
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<footer>
+  © 2025 NatureGlam. Tous droits réservés.
+</footer>
+
+<!-- Lightbox modal -->
+<div id="myModal" class="modal">
+  <span class="modal-close" onclick="closeModal()">&times;</span>
+  <img class="modal-content" id="modal-img">
+</div>
+
+<!-- Sticky CTA mobile -->
+<div class="sticky-cta">
+  <div class="sticky-cta-price">Philips Tondeuse • 500 DH</div>
+  <a class="sticky-cta-btn" href="https://wa.me/212674994867" target="_blank">Commander WhatsApp</a>
+</div>
+
+<script>
+  const images = [
+    "Philipstondeuse.jpeg",
+    "Philipstondeuse1.jpeg",
+    "Philipstondeuse2.jpeg",
+    "Philipstondeuse3.jpeg",
+    "Philipstondeuse4.jpeg",
+    "Philipstondeuse5.jpeg",
+    "Philipstondeuse6.jpeg",
+    "Philipstondeuse7.jpeg"
+  ];
+  let index = 0;
+
+  function showImage() {
+    document.getElementById("main-img").src = images[index];
+  }
+  function prevSlide() {
+    index = (index - 1 + images.length) % images.length;
+    showImage();
+  }
+  function nextSlide() {
+    index = (index + 1) % images.length;
+    showImage();
+  }
+
+  function openModal(src) {
+    document.getElementById("myModal").style.display = "block";
+    document.getElementById("modal-img").src = src;
+  }
+  function closeModal() {
+    document.getElementById("myModal").style.display = "none";
+  }
+  window.onclick = function(event) {
+    const modal = document.getElementById("myModal");
+    if (event.target == modal) modal.style.display = "none";
+  }
+</script>
+
+</body>
+</html>
