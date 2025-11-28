@@ -1,187 +1,846 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NatureGlam - Produits Naturels & Artisanaux</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NatureGlam - Boutique beauté authentique au Maroc</title>
+<meta name="description" content="NatureGlam - Appareils coiffants, épilation et compléments capillaires 100% authentiques. Livraison gratuite partout au Maroc et paiement à la livraison.">
+<style>
+  :root {
+    --primary: #16a085;
+    --primary-dark: #12806a;
+    --accent: #f6c453;
+    --bg: #f5f5f5;
+    --text: #1f2933;
+    --muted: #6b7280;
+    --shadow-soft: 0 8px 20px rgba(15, 23, 42, 0.08);
+    --radius-card: 16px;
+  }
 
-    <style>
-        :root {
-            --beige: #F5F0E6;
-            --olive: #5A6E46;
-            --brun: #8B5E3B;
-            --blanc-casse: #FAF9F6;
-        }
+  * { box-sizing: border-box; }
 
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: var(--beige);
-            color: #333;
-        }
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text);
+  }
 
-        header {
-            background-color: white;
-            padding: 20px;
-            text-align: center;
-            border-bottom: 2px solid var(--olive);
-        }
+  /* HEADER – compact + contraste + logo visible */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f9fafb;
+    padding: 6px 16px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
 
-        h1 {
-            margin: 0;
-            font-size: 2.5em;
-            color: var(--olive);
-        }
+  .logo {
+    background: #ffffff;
+    padding: 4px 12px;
+    border-radius: 999px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+  }
 
-        /* Barre de recherche */
-        .search-container {
-            text-align: center;
-            margin: 20px 0;
-        }
+  .logo img {
+    height: 70px;
+    max-height: 70px;
+    object-fit: contain;
+    display: block;
+  }
 
-        #search-input {
-            padding: 10px 15px;
-            width: 80%;
-            max-width: 500px;
-            border-radius: 25px;
-            border: 2px solid var(--olive);
-            outline: none;
-            font-size: 1em;
-        }
+  .search-help {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
 
-        /* Filtres catégories */
-        .categories {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 25px;
-            flex-wrap: wrap;
-        }
+  .search-input {
+    padding: 6px 10px;
+    border-radius: 999px;
+    border: 1px solid #d1d5db;
+    width: 210px;
+    max-width: 100%;
+    font-size: 13px;
+    outline: none;
+    transition: 0.2s;
+  }
 
-        .category-btn {
-            padding: 10px 20px;
-            border: 2px solid var(--olive);
-            background-color: white;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: 0.3s;
-        }
+  .search-input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(22,160,133,0.2);
+  }
 
-        .category-btn:hover, .category-btn.active {
-            background-color: var(--olive);
-            color: white;
-        }
+  a.help-btn {
+    text-decoration: none;
+    background: #25D366;
+    color: #fff;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-weight: bold;
+    font-size: 13px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+    transition: 0.2s;
+    box-shadow: 0 4px 12px rgba(37,211,102,0.25);
+  }
 
-        /* Grille produits */
-        .container {
-            width: 90%;
-            margin: 0 auto;
-        }
+  a.help-btn:hover {
+    background: #1ebe5d;
+    transform: translateY(-1px);
+  }
 
-        #product-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 25px;
-        }
+  /* HERO – compact */
+  .hero {
+    background: #fff9f0;
+    padding: 16px 16px 18px;
+    box-shadow: var(--shadow-soft);
+    margin: 6px auto 12px;
+    max-width: 1200px;
+    border-radius: 18px;
+  }
 
-        .card {
-            background-color: var(--blanc-casse);
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-            text-align: center;
-        }
+  .hero-content {
+    max-width: 620px;
+  }
 
-        /* Slider images */
-        .slider {
-            position: relative;
-            width: 100%;
-            aspect-ratio: 1;
-            overflow: hidden;
-            border-radius: 10px;
-        }
+  .hero-eyebrow {
+    font-size: 11px;
+    font-weight: bold;
+    color: var(--primary);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
 
-        .slider img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            position: absolute;
-            top: 0;
-            left: 0;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
+  .hero h1 {
+    font-size: 22px;
+    margin: 0 0 6px;
+    line-height: 1.3;
+  }
 
-        .slider img.active {
-            opacity: 1;
-        }
+  .hero p {
+    margin: 0 0 10px;
+    font-size: 13px;
+    color: var(--muted);
+  }
 
-        .slider button {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(255,255,255,0.7);
-            border: none;
-            padding: 5px 10px;
-            cursor: pointer;
-            font-size: 18px;
-            border-radius: 5px;
-        }
+  .hero-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
 
-        .slider button.prev { left: 5px; }
-        .slider button.next { right: 5px; }
+  .btn-primary,
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 7px 13px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.2s;
+    border: 1px solid transparent;
+    white-space: nowrap;
+  }
 
-        /* Pied de page */
-        footer {
-            text-align: center;
-            margin: 40px 0;
-            padding: 20px;
-            background-color: var(--olive);
-            color: white;
-        }
-    </style>
+  .btn-primary {
+    background: var(--primary);
+    color: #fff;
+    box-shadow: 0 5px 14px rgba(22,160,133,0.25);
+  }
+
+  .btn-primary:hover {
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+  }
+
+  .btn-outline {
+    background: #ffffff;
+    color: var(--primary-dark);
+    border-color: rgba(22,160,133,0.25);
+  }
+
+  .btn-outline:hover {
+    background: #ecfdf5;
+  }
+
+  .hero-badges {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  .hero-badges li {
+    background: #ffffff;
+    border-radius: 999px;
+    padding: 5px 8px;
+    border: 1px solid #e5e7eb;
+  }
+
+  /* BANDEAUX */
+  .info-strip {
+    max-width: 1200px;
+    margin: 0 auto 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 0 16px;
+  }
+
+  .info-pill {
+    flex: 1 1 220px;
+    background: #0b84ff;
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    text-align: center;
+    font-weight: 500;
+  }
+
+  .info-pill.secondary {
+    background: var(--accent);
+    color: #111827;
+  }
+
+  /* CATEGORIES */
+  .category-bar {
+    max-width: 1200px;
+    margin: 0 auto 4px;
+    padding: 0 16px 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .category-btn {
+    border-radius: 999px;
+    border: 1px solid #e5e7eb;
+    background: #ffffff;
+    padding: 6px 11px;
+    font-size: 12px;
+    cursor: pointer;
+    color: #4b5563;
+    transition: 0.2s;
+  }
+
+  .category-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary-dark);
+  }
+
+  .category-btn.active {
+    background: var(--primary);
+    color: #ffffff;
+    border-color: var(--primary);
+  }
+
+  /* PRODUITS */
+  #produits {
+    margin-top: 8px;
+  }
+
+  .products-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 14px 16px 24px;
+    max-width: 1200px;
+    margin: auto;
+    gap: 16px;
+  }
+
+  .card {
+    background: #ffffff;
+    border-radius: var(--radius-card);
+    padding: 12px;
+    box-shadow: var(--shadow-soft);
+    flex: 0 0 23%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 380px;
+    position: relative;
+    transition: 0.15s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(15,23,42,0.12);
+  }
+
+  .images {
+    width: 100%;
+    height: 180px;
+    position: relative;
+    margin-bottom: 8px;
+    cursor: pointer;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #f3f4f6;
+  }
+
+  .images img {
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    object-fit: cover;
+    display: none;
+  }
+
+  .images img.active {
+    display: block;
+  }
+
+  .slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(15,23,42,0.35);
+    color: white;
+    border: none;
+    font-size: 16px;
+    padding: 4px 7px;
+    cursor: pointer;
+    border-radius: 999px;
+  }
+
+  .prev { left: 6px; }
+  .next { right: 6px; }
+
+  h3 {
+    font-size: 14px;
+    color: #111827;
+    margin: 8px 0 4px;
+    text-align: center;
+  }
+
+  .price {
+    font-size: 15px;
+    color: var(--primary);
+    margin-bottom: 4px;
+    font-weight: bold;
+  }
+
+  .price span {
+    font-size: 12px;
+    color: #6b7280;
+    font-weight: normal;
+  }
+
+  p {
+    font-size: 12px;
+    color: #555;
+    line-height: 1.4;
+    margin-bottom: 5px;
+    text-align: center;
+  }
+
+  .garantie {
+    font-size: 11px;
+    color: #111827;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 6px;
+  }
+
+  /* ✅ Badges produit : livraison + paiement */
+  .product-badges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px;
+    margin-bottom: 6px;
+  }
+
+  .product-badges span {
+    font-size: 11px;
+    padding: 3px 7px;
+    border-radius: 999px;
+    background: #ecfdf5;
+    color: #065f46;
+    border: 1px solid #a7f3d0;
+  }
+
+  .btn-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    width: 100%;
+    margin-top: auto;
+  }
+
+  .view-product,
+  .whatsapp {
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: bold;
+    width: 85%;
+    transition: 0.2s;
+    color: white;
+  }
+
+  .view-product {
+    background: #ff7f50;
+    padding: 6px;
+  }
+
+  .view-product:hover {
+    background: #e06c41;
+  }
+
+  .whatsapp {
+    background: #25D366;
+    padding: 7px;
+  }
+
+  .whatsapp:hover {
+    background: #1ebe5d;
+  }
+
+  /* ⭐ Section avis */
+  .reviews-section {
+    max-width: 1200px;
+    margin: 8px auto 20px;
+    padding: 0 16px;
+  }
+
+  .reviews-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+
+  .reviews-subtitle {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+
+  .reviews-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .review-card {
+    flex: 1 1 260px;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 10px 12px;
+    box-shadow: 0 4px 12px rgba(15,23,42,0.06);
+    font-size: 12px;
+  }
+
+  .review-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4px;
+    font-weight: 600;
+  }
+
+  .review-stars {
+    color: #f59e0b;
+    font-size: 12px;
+  }
+
+  .review-text {
+    color: #4b5563;
+    line-height: 1.5;
+  }
+
+  footer {
+    text-align: center;
+    padding: 12px;
+    background: #ffffff;
+    font-size: 12px;
+    color: #6b7280;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 1000px) {
+    .card { flex: 0 0 48%; min-height: auto; }
+    .images { height: 170px; }
+    .hero { padding: 14px; }
+  }
+
+  @media (max-width: 700px) {
+    header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+    }
+    .search-help {
+      width: 100%;
+      justify-content: space-between;
+    }
+    .search-input {
+      flex: 1;
+      min-width: 0;
+      width: 100%;
+    }
+    .hero {
+      margin: 4px 10px 10px;
+      border-radius: 14px;
+    }
+    .hero h1 {
+      font-size: 19px;
+    }
+    .info-strip {
+      padding: 0 10px;
+    }
+    .category-bar {
+      padding: 0 10px 6px;
+    }
+    .products-container {
+      padding: 10px 10px 18px;
+    }
+    .card { flex: 0 0 100%; }
+  }
+</style>
 </head>
 <body>
 
 <header>
-    <h1>NatureGlam</h1>
-    <p>Produits naturels & bien-être</p>
+  <div class="logo">
+    <img src="logo.png" alt="NatureGlam Logo">
+  </div>
+  <div class="search-help">
+    <input type="text" id="search-input" class="search-input" placeholder="Rechercher un article...">
+    <a class="help-btn" href="https://wa.me/212674994867" target="_blank">
+      💬 Besoin d'aide ?
+    </a>
+  </div>
 </header>
 
-<div class="search-container">
-    <input type="text" id="search-input" placeholder="Rechercher un produit...">
-</div>
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow">Boutique beauté au Maroc</div>
+    <h1>Appareils coiffants & soins cheveux 100% authentiques</h1>
+    <p>NatureGlam vous propose des marques reconnues, livrées partout au Maroc avec paiement à la livraison. Prenez soin de vos cheveux en toute confiance.</p>
 
-<div class="categories">
-    <button class="category-btn active" data-category="all">Tous</button>
-    <button class="category-btn" data-category="soin">Soins</button>
-    <button class="category-btn" data-category="beaute">Beauté</button>
-    <button class="category-btn" data-category="bien-etre">Bien-être</button>
-    <button class="category-btn" data-category="maison">Maison</button>
-</div>
-
-<div class="container">
-    <div id="product-list">
-        <!-- PRODUITS (inchangés) -->
-        <div class="card" data-category="soin">
-            <div class="slider" id="gentle-pure-slider">
-                <img src="gentle-pure-1.jpg" alt="Gentle Pure - Image 1" class="active">
-                <img src="gentle-pure-2.jpg" alt="Gentle Pure - Image 2">
-                <img src="gentle-pure-3.jpg" alt="Gentle Pure - Image 3">
-                <button class="prev" onclick="prevSlide('gentle-pure-slider')">&#10094;</button>
-                <button class="next" onclick="nextSlide('gentle-pure-slider')">&#10095;</button>
-            </div>
-            <p class="product-icon">🧴</p>
-            <h3>Gentle Pure</h3>
-            <p class="description">Baume naturel ultra-doux.</p>
-            <a href="#" class="btn">Découvrir</a>
-        </div>
+    <div class="hero-cta">
+      <a href="#produits" class="btn-primary">🛍️ Découvrir les nouveautés</a>
+      <a href="https://wa.me/212674994867" target="_blank" class="btn-outline">💚 Parler avec un conseiller</a>
     </div>
+
+    <ul class="hero-badges">
+      <li>✅ Produits 100% authentiques</li>
+      <li>🚚 Livraison gratuite partout au Maroc</li>
+      <li>💳 Paiement à la livraison</li>
+    </ul>
+  </div>
+</section>
+
+<div class="info-strip">
+  <div class="info-pill">🚚 Livraison gratuite partout au Maroc</div>
+  <div class="info-pill secondary">✅ Articles authentiques et originaux</div>
 </div>
+
+<nav class="category-bar">
+  <button class="category-btn active" data-category="all">Tous les produits</button>
+  <button class="category-btn" data-category="coiffage">Coiffage & lisseurs</button>
+  <button class="category-btn" data-category="epilation">Épilation</button>
+  <button class="category-btn" data-category="complement">Compléments capillaires</button>
+</nav>
+
+<div id="produits" class="products-container">
+
+  <!-- Babyliss -->
+  <div class="card" data-category="coiffage">
+    <div class="images" id="Babyliss" onclick="window.location.href='Babyliss.html'">
+      <img src="Babyliss1.jpg" class="active" alt="Babyliss Brosse Soufflante 1200W">
+      <img src="Babyliss2.jpg" alt="">
+      <img src="Babyliss3.jpg" alt="">
+      <img src="Babyliss4.jpg" alt="">
+      <img src="Babyliss5.jpg" alt="">
+      <img src="Babyliss6.jpg" alt="">
+      <button class="slider-btn prev" onclick="prevSlide('Babyliss'); event.stopPropagation();">&#10094;</button>
+      <button class="slider-btn next" onclick="nextSlide('Babyliss'); event.stopPropagation();">&#10095;</button>
+    </div>
+    <h3>Babyliss Brosse Soufflante 1200W</h3>
+    <div class="price">💰 800 DH <span>/ paiement à la livraison</span></div>
+    <div class="product-badges">
+      <span>🚚 Livraison gratuite</span>
+      <span>💳 Paiement à la livraison</span>
+    </div>
+    <p>Brosse soufflante 1200W avec plusieurs embouts pour un brushing rapide et facile à domicile.</p>
+    <div class="garantie">Garantie 2 ans</div>
+    <div class="btn-container">
+      <a class="view-product" href="Babyliss.html">Voir le produit</a>
+      <a class="whatsapp" href="https://wa.me/212674994867" target="_blank">📱 Commander sur WhatsApp</a>
+    </div>
+  </div>
+
+  <!-- Demeliss -->
+  <div class="card" data-category="coiffage">
+    <div class="images" id="Demeliss" onclick="window.location.href='Demeliss.html'">
+      <img src="Demeliss1.jpg" class="active" alt="Lisseur Demeliss Saint Algue Gold">
+      <img src="Demeliss2.jpg" alt="">
+      <img src="Demeliss3.jpg" alt="">
+      <img src="Demeliss4.jpg" alt="">
+      <img src="Demeliss5.jpg" alt="">
+      <img src="Demeliss6.jpg" alt="">
+      <img src="Demeliss7.jpg" alt="">
+      <button class="slider-btn prev" onclick="prevSlide('Demeliss'); event.stopPropagation();">&#10094;</button>
+      <button class="slider-btn next" onclick="nextSlide('Demeliss'); event.stopPropagation();">&#10095;</button>
+    </div>
+    <h3>Demeliss SAINT ALGUE Lisseur GOLD</h3>
+    <div class="price">💰 500 DH <span>/ idéal pour lissage quotidien</span></div>
+    <div class="product-badges">
+      <span>🚚 Livraison gratuite</span>
+      <span>💳 Paiement à la livraison</span>
+    </div>
+    <p>Lissage dès la racine, plaques fines en céramique, température réglable de 150°C à 230°C.</p>
+    <div class="garantie">Garantie 2 ans</div>
+    <div class="btn-container">
+      <a class="view-product" href="Demeliss.html">Voir le produit</a>
+      <a class="whatsapp" href="https://wa.me/212674994867" target="_blank">📱 Commander sur WhatsApp</a>
+    </div>
+  </div>
+
+  <!-- Philips -->
+  <div class="card" data-category="epilation">
+    <div class="images" id="Philips" onclick="window.location.href='Philips.html'">
+      <img src="Philips1.jpg" class="active" alt="Philips Satinelle Essential BRE224/00">
+      <img src="Philips2.jpg" alt="">
+      <img src="Philips3.jpg" alt="">
+      <img src="Philips4.jpg" alt="">
+      <img src="Philips5.jpg" alt="">
+      <img src="Philips6.jpg" alt="">
+      <button class="slider-btn prev" onclick="prevSlide('Philips'); event.stopPropagation();">&#10094;</button>
+      <button class="slider-btn next" onclick="nextSlide('Philips'); event.stopPropagation();">&#10095;</button>
+    </div>
+    <h3>Philips Satinelle Essential BRE224/00</h3>
+    <div class="price">💰 450 DH <span>/ épilation en douceur</span></div>
+    <div class="product-badges">
+      <span>🚚 Livraison gratuite</span>
+      <span>💳 Paiement à la livraison</span>
+    </div>
+    <p>Épilateur compact filaire, efficace et doux pour toutes les zones du corps.</p>
+    <div class="garantie">Garantie 2 ans</div>
+    <div class="btn-container">
+      <a class="view-product" href="Philips.html">Voir le produit</a>
+      <a class="whatsapp" href="https://wa.me/212674994867" target="_blank">📱 Commander sur WhatsApp</a>
+    </div>
+  </div>
+
+  <!-- Remington Slim -->
+  <div class="card" data-category="coiffage">
+    <div class="images" id="RemingtonSlim" onclick="window.location.href='Remington.html'">
+      <img src="Remington1.jpg" class="active" alt="Remington Ceramic Slim S1510">
+      <img src="Remington2.jpg" alt="">
+      <img src="Remington3.jpg" alt="">
+      <img src="Remington4.jpg" alt="">
+      <img src="Remington5.jpg" alt="">
+      <button class="slider-btn prev" onclick="prevSlide('RemingtonSlim'); event.stopPropagation();">&#10094;</button>
+      <button class="slider-btn next" onclick="nextSlide('RemingtonSlim'); event.stopPropagation();">&#10095;</button>
+    </div>
+    <h3>Remington Lisseur Cheveux Ceramic Slim S1510</h3>
+    <div class="price">💰 500 DH</div>
+    <div class="product-badges">
+      <span>🚚 Livraison gratuite</span>
+      <span>💳 Paiement à la livraison</span>
+    </div>
+    <p>Revêtement céramique tourmaline antistatique, chaleur homogène et brillance, glisse facile.</p>
+    <div class="garantie">Garantie 2 ans</div>
+    <div class="btn-container">
+      <a class="view-product" href="Remington.html">Voir le produit</a>
+      <a class="whatsapp" href="https://wa.me/212674994867" target="_blank">📱 Commander sur WhatsApp</a>
+    </div>
+  </div>
+
+  <!-- Remington Innovation -->
+  <div class="card" data-category="coiffage">
+    <div class="images" id="RemingtonInnovation" onclick="window.location.href='Remington_innovation.html'">
+      <img src="Proremington1.jpg" class="active" alt="Remington Keratin Therapy">
+      <img src="Proremington2.jpg" alt="">
+      <img src="Proremington3.jpg" alt="">
+      <img src="Proremington4.jpg" alt="">
+      <img src="Proremington5.jpg" alt="">
+      <img src="Proremington6.jpg" alt="">
+      <img src="Proremington7.jpg" alt="">
+      <img src="Proremington8.jpg" alt="">
+      <button class="slider-btn prev" onclick="prevSlide('RemingtonInnovation'); event.stopPropagation();">&#10094;</button>
+      <button class="slider-btn next" onclick="nextSlide('RemingtonInnovation'); event.stopPropagation();">&#10095;</button>
+    </div>
+    <h3>Remington Lisseur Cheveux Keratin Therapy</h3>
+    <div class="price">💰 850 DH</div>
+    <div class="product-badges">
+      <span>🚚 Livraison gratuite</span>
+      <span>💳 Paiement à la livraison</span>
+    </div>
+    <p>Fer à lisser avec soin Kératine & Huile d'Amande, plaques céramique, écran LCD, température 160-230°C.</p>
+    <div class="garantie">Garantie 2 ans</div>
+    <div class="btn-container">
+      <a class="view-product" href="Remington_innovation.html">Voir le produit</a>
+      <a class="whatsapp" href="https://wa.me/212674994867" target="_blank">📱 Commander sur WhatsApp</a>
+    </div>
+  </div>
+
+  <!-- Remington Mini Lisseur -->
+  <div class="card" data-category="coiffage">
+    <div class="images" id="RemingtonMini" onclick="window.location.href='Remington_mini_lisseur.html'">
+      <img src="onthego1.jpg" class="active" alt="Remington Mini Lisseur On The Go">
+      <img src="onthego2.jpg" alt="">
+      <img src="onthego3.jpg" alt="">
+      <img src="onthego4.jpg" alt="">
+      <button class="slider-btn prev" onclick="prevSlide('RemingtonMini'); event.stopPropagation();">&#10094;</button>
+      <button class="slider-btn next" onclick="nextSlide('RemingtonMini'); event.stopPropagation();">&#10095;</button>
+    </div>
+    <h3>Remington Mini Lisseur Pratique On The Go</h3>
+    <div class="price">💰 350 DH</div>
+    <div class="product-badges">
+      <span>🚚 Livraison gratuite</span>
+      <span>💳 Paiement à la livraison</span>
+    </div>
+    <p>Lisseur compact pour voyager, plaques céramique, chauffe rapide, idéal pour cheveux courts ou fins.</p>
+    <div class="garantie">Garantie 2 ans</div>
+    <div class="btn-container">
+      <a class="view-product" href="Remington_mini_lisseur.html">Voir le produit</a>
+      <a class="whatsapp" href="https://wa.me/212674994867" target="_blank">📱 Commander sur WhatsApp</a>
+    </div>
+  </div>
+
+  <!-- Remington Boucleur -->
+  <div class="card" data-category="coiffage">
+    <div class="images" id="RemingtonBoucleur" onclick="window.location.href='Remington_boucleur.html'">
+      <img src="silk1.jpg" class="active" alt="Remington Boucleur Conique 13-25mm">
+      <img src="silk2.jpg" alt="">
+      <img src="silk3.jpg" alt="">
+      <button class="slider-btn prev" onclick="prevSlide('RemingtonBoucleur'); event.stopPropagation();">&#10094;</button>
+      <button class="slider-btn next" onclick="nextSlide('RemingtonBoucleur'); event.stopPropagation();">&#10095;</button>
+    </div>
+    <h3>Remington Boucleur à cheveux Conique 13-25mm</h3>
+    <div class="price">💰 400 DH</div>
+    <div class="product-badges">
+      <span>🚚 Livraison gratuite</span>
+      <span>💳 Paiement à la livraison</span>
+    </div>
+    <p>Boucleur professionnel, revêtement céramique, chaleur réglable, pour ondulations naturelles.</p>
+    <div class="garantie">Garantie 2 ans</div>
+    <div class="btn-container">
+      <a class="view-product" href="Remington_boucleur.html">Voir le produit</a>
+      <a class="whatsapp" href="https://wa.me/212674994867" target="_blank">📱 Commander sur WhatsApp</a>
+    </div>
+  </div>
+
+  <!-- Philips Rouge -->
+  <div class="card" data-category="epilation">
+    <div class="images" id="PhilipsRouge" onclick="window.location.href='PhilipsRouge.html'">
+      <img src="PhilipsRouge1.jpg" class="active" alt="Philips Epilateur Satinelle Essentiel BRE225/00">
+      <img src="PhilipsRouge2.jpg" alt="">
+      <img src="PhilipsRouge3.jpg" alt="">
+      <img src="PhilipsRouge4.jpg" alt="">
+      <img src="PhilipsRouge5.jpg" alt="">
+      <img src="PhilipsRouge6.jpg" alt="">
+      <button class="slider-btn prev" onclick="prevSlide('PhilipsRouge'); event.stopPropagation();">&#10094;</button>
+      <button class="slider-btn next" onclick="nextSlide('PhilipsRouge'); event.stopPropagation();">&#10095;</button>
+    </div>
+    <h3>Philips Epilateur Satinelle Essentiel BRE225/00</h3>
+    <div class="price">💰 550 DH</div>
+    <div class="product-badges">
+      <span>🚚 Livraison gratuite</span>
+      <span>💳 Paiement à la livraison</span>
+    </div>
+    <p>Épilateur avec 21 embouts et 2 réglages de vitesse pour un confort optimal.</p>
+    <div class="garantie">Garantie 2 ans</div>
+    <div class="btn-container">
+      <a class="view-product" href="PhilipsRouge.html">Voir le produit</a>
+      <a class="whatsapp" href="https://wa.me/212674994867" target="_blank">📱 Commander sur WhatsApp</a>
+    </div>
+  </div>
+
+  <!-- Luxeol -->
+  <div class="card" data-category="complement">
+    <div class="images" id="Luxeol" onclick="window.location.href='Luxeol.html'">
+      <img src="luxeol1.jpg" class="active" alt="Luxeol Pousse Croissance & Fortification">
+      <img src="luxeol2.jpg" alt="">
+      <img src="luxeol3.jpg" alt="">
+      <img src="luxeol4.jpg" alt="">
+      <img src="luxeol5.jpg" alt="">
+      <img src="luxeol6.jpg" alt="">
+      <img src="luxeol7.jpg" alt="">
+      <button class="slider-btn prev" onclick="prevSlide('Luxeol'); event.stopPropagation();">&#10094;</button>
+      <button class="slider-btn next" onclick="nextSlide('Luxeol'); event.stopPropagation();">&#10095;</button>
+    </div>
+    <h3>Luxeol Pousse Croissance & Fortification</h3>
+    <div class="price">💰 450 DH</div>
+    <div class="product-badges">
+      <span>🚚 Livraison gratuite</span>
+      <span>💳 Paiement à la livraison</span>
+    </div>
+    <p>Complément pour cheveux, triple action : renforce, fortifie et favorise la pousse.</p>
+    <div class="garantie">Produit d’origine européenne</div>
+    <div class="btn-container">
+      <a class="view-product" href="Luxeol.html">Voir le produit</a>
+      <a class="whatsapp" href="https://wa.me/212674994867" target="_blank">📱 Commander sur WhatsApp</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- ⭐ AVIS CLIENTES -->
+<section class="reviews-section">
+  <div class="reviews-title">Avis de nos clientes</div>
+  <div class="reviews-subtitle">Elles ont testé NatureGlam et partagent leur expérience.</div>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-header">
+        <span>Samira – Casablanca</span>
+        <span class="review-stars">★★★★★</span>
+      </div>
+      <div class="review-text">
+        J’étais sceptique au début, mais cette brosse Babyliss a changé ma routine. En 10 minutes j’ai un brushing propre comme chez le coiffeur. Livraison rapide et paiement à la livraison, rien à dire 👌
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="review-header">
+        <span>Imane – Rabat</span>
+        <span class="review-stars">★★★★★</span>
+      </div>
+      <div class="review-text">
+        Produit 100% original, bien emballé. J’ai reçu exactement ce qui est sur les photos du site. Je l’utilise presque tous les jours et mes cheveux ne sont pas abîmés.
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="review-header">
+        <span>Nadia – Marrakech</span>
+        <span class="review-stars">★★★★☆</span>
+      </div>
+      <div class="review-text">
+        Franchement pratique pour les mamans qui n’ont pas le temps. Je me coiffe et je coiffe ma fille à la maison. J’ai beaucoup aimé le sérieux de NatureGlam.
+      </div>
+    </div>
+  </div>
+</section>
 
 <footer>
-    <p>&copy; 2025 NatureGlam. Tous droits réservés.</p>
+  &copy; 2025 NatureGlam. Tous droits réservés.
 </footer>
 
 <script>
@@ -215,7 +874,7 @@ function prevSlide(id){
   images[prevIndex].classList.add('active');
 }
 
-/* Filtres */
+/* FILTRE CATEGORIES + RECHERCHE */
 const categoryButtons = document.querySelectorAll('.category-btn');
 const cards = document.querySelectorAll('.card');
 let activeCategory = 'all';
@@ -248,12 +907,6 @@ function applyFilters() {
   });
 }
 </script>
-
-<!-- ✅ CLICKY ANALYTICS INTÉGRÉ PROPREMENT -->
-<a title="Web Analytics" href="https://clicky.com/101497157">
-  <img alt="Clicky" src="//static.getclicky.com/media/links/badge.gif" border="0" />
-</a>
-<script async data-id="101497157" src="//static.getclicky.com/js"></script>
 
 </body>
 </html>
