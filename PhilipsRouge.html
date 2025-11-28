@@ -6,41 +6,166 @@
 <title>Philips Epilateur Satinelle Essentiel BRE225/00 - NatureGlam</title>
 <style>
   body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f5f5f5; }
-  header { display:flex; justify-content:space-between; align-items:center; background:#fff; padding:10px 20px; box-shadow:0 4px 8px rgba(0,0,0,0.1); position:sticky; top:0; z-index:100; }
-  .logo img { height:80px; object-fit:contain; }
-  .header-info { font-weight:bold; color:#0b84ff; font-size:16px; }
+
+  header {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:#fff;
+    padding:10px 20px;
+    box-shadow:0 4px 8px rgba(0,0,0,0.1);
+    position:sticky;
+    top:0;
+    z-index:100;
+  }
+  .logo img { height:80px; object-fit:contain; cursor:pointer; }
+  .header-info { font-weight:bold; color:#0b84ff; font-size:16px; white-space:nowrap; }
+
+  /* 🔹 Slider de messages au milieu du header */
+  .header-slider {
+    flex:1;
+    text-align:center;
+    padding:0 20px;
+    font-size:14px;
+    font-weight:bold;
+    color:#0b84ff;
+  }
+  .header-slider span {
+    display:inline-block;
+  }
+
   .banner { background:#0b84ff; color:white; text-align:center; padding:10px; font-size:16px; font-weight:bold; }
+
   .product-container { display:flex; flex-wrap:wrap; max-width:1200px; margin:auto; gap:20px; padding:20px; justify-content:center; }
   .product-images { flex:1 1 400px; display:flex; flex-direction:column; align-items:center; }
-  .product-images img { width:100%; max-width:400px; border-radius:12px; margin-bottom:10px; }
+  .product-images img { width:100%; max-width:400px; border-radius:12px; margin-bottom:10px; cursor:pointer; }
   .slider-btn { background:#0b84ff; color:white; border:none; font-size:18px; padding:5px 10px; cursor:pointer; border-radius:5px; margin:5px; }
+
   .product-details { flex:1 1 400px; background:#fff; border-radius:15px; padding:20px; box-shadow:0 6px 20px rgba(0,0,0,0.1); }
   .product-details h1 { font-size:24px; margin-bottom:10px; }
-  .price { font-size:22px; color:#0b84ff; font-weight:bold; margin:10px 0; }
+
+  .price { margin:10px 0; }
+  .old-price { font-size:14px; color:#999; text-decoration:line-through; }
+  .new-price { font-size:22px; color:#0b84ff; font-weight:bold; margin-left:8px; }
+  .promo { margin-left:8px; color:#18a34a; font-size:14px; }
+
   .desc { font-size:14px; line-height:1.5; margin-bottom:10px; }
   .whatsapp { display:block; text-decoration:none; background:#25D366; color:white; text-align:center; padding:10px; border-radius:12px; font-size:16px; font-weight:bold; margin-top:15px; transition:0.3s; }
   .whatsapp:hover { background:#1ebe5d; }
   .section-title { font-weight:bold; font-size:16px; margin-top:15px; margin-bottom:5px; }
+
   form { display:flex; flex-direction:column; gap:10px; margin-top:15px; }
   input, textarea { padding:8px; border-radius:8px; border:1px solid #ccc; width:100%; box-sizing:border-box; }
   button.submit-btn { background:#0b84ff; color:white; border:none; padding:10px; border-radius:10px; font-weight:bold; cursor:pointer; transition:0.3s; }
   button.submit-btn:hover { background:#0963c6; }
+
   footer { text-align:center; padding:15px; background:#fff; margin-top:40px; font-size:14px; color:#555; font-family: Arial, sans-serif; font-style:italic; }
+
+  /* Bloc récapitulatif prix façon Amazon */
+  .price-summary {
+    background:#f9fafb;
+    border-radius:10px;
+    padding:10px 12px;
+    margin-top:10px;
+    border:1px solid #e5e7eb;
+    font-size:14px;
+  }
+  .price-summary-title {
+    font-weight:bold;
+    margin-bottom:6px;
+  }
+  .summary-row {
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:4px;
+  }
+  .summary-row.summary-total {
+    margin-top:6px;
+    font-weight:bold;
+    font-size:15px;
+  }
+  .summary-discount-positive {
+    color:#16a085;
+  }
+
+  /* Lightbox / Modal */
+  .modal { display: none; position: fixed; z-index: 200; padding-top: 60px; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.8); }
+  .modal-content { margin: auto; display: block; max-width: 90%; max-height: 80%; border-radius: 12px; }
+  .modal-close { position: absolute; top: 20px; right: 35px; color: #fff; font-size: 40px; font-weight: bold; cursor: pointer; }
+
+  /* Sticky CTA cachée sur desktop */
+  .sticky-cta { display:none; }
+
+  /* Responsive header + sticky CTA mobile */
+  @media (max-width: 768px) {
+    header {
+      flex-wrap:wrap;
+      gap:8px;
+    }
+    .header-slider {
+      order:3;
+      width:100%;
+      padding:0;
+      font-size:13px;
+    }
+    .header-info {
+      font-size:14px;
+    }
+
+    .sticky-cta {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #ffffff;
+      box-shadow: 0 -3px 10px rgba(0,0,0,0.1);
+      padding: 10px 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 150;
+    }
+    .sticky-cta-price {
+      font-weight: bold;
+      color: #0b84ff;
+      font-size: 16px;
+    }
+    .sticky-cta-btn {
+      background:#25D366;
+      color:#fff;
+      border:none;
+      padding:8px 12px;
+      border-radius:8px;
+      font-size:14px;
+      font-weight:bold;
+      text-decoration:none;
+    }
+  }
 </style>
 </head>
 <body>
 
 <header>
-  <div class="logo"><img src="nov. 2025, 02_24_43.png" alt="NatureGlam Logo"></div>
+  <div class="logo">
+    <a href="index.html">
+      <img src="nov. 2025, 02_24_43.png" alt="NatureGlam Logo">
+    </a>
+  </div>
+
+  <!-- 🔹 Slide de messages au milieu -->
+  <div class="header-slider">
+    <span id="header-slide-text">🚚 Livraison gratuite partout au Maroc</span>
+  </div>
+
   <div class="header-info">Retour gratuit</div>
 </header>
 
-<div class="banner">🚚 Livraison gratuite partout au Maroc</div>
+<div class="banner">🚚 Livraison gratuite partout au Maroc • Paiement à la livraison</div>
 
 <div class="product-container">
 
   <div class="product-images">
-    <img src="Philipsrouge1.jpg" id="main-img" alt="Philips Epilateur Satinelle Essentiel BRE225/00">
+    <img src="Philipsrouge1.jpg" id="main-img" alt="Philips Epilateur Satinelle Essentiel BRE225/00" onclick="openModal(this.src)">
     <div>
       <button class="slider-btn" onclick="prevSlide()">&#10094; Précédent</button>
       <button class="slider-btn" onclick="nextSlide()">Suivant &#10095;</button>
@@ -49,14 +174,21 @@
 
   <div class="product-details">
     <h1>Philips Epilateur Satinelle Essentiel BRE225/00</h1>
-    <div class="price">💰 550 DH</div>
+
+    <!-- Prix + promo -->
+    <div class="price">
+      <span class="old-price">650 DH</span>
+      <span class="new-price" id="display-price">550 DH</span>
+      <span class="promo">(-15% promo limitée)</span>
+    </div>
+
     <div class="desc">
       Épilateur avec 21 embouts et 2 réglages de vitesse pour un confort optimal.
     </div>
 
     <div class="section-title">À propos de cet article</div>
     <div class="desc">
-      Épilateur pratique et efficace pour toutes les zones du corps. Sa tête douce et ses accessoires permettent un épilation confortable et rapide. Convient aux adultes et pour un usage régulier.
+      Épilateur pratique et efficace pour toutes les zones du corps. Sa tête douce et ses accessoires permettent une épilation confortable et rapide. Convient aux adultes et pour un usage régulier.
     </div>
 
     <div class="section-title">Détails sur le produit</div>
@@ -84,6 +216,43 @@
       <input type="text" name="Ville" placeholder="Ville" required>
       <input type="tel" name="Téléphone" placeholder="Téléphone" required>
       <input type="hidden" name="Produit" value="Philips Epilateur Satinelle Essentiel BRE225/00">
+
+      <!-- Code promo -5% -->
+      <div class="section-title">Code promo</div>
+      <div class="desc">
+        <input type="text" id="coupon-input" placeholder="Code promo (optionnel)">
+        <button type="button" class="submit-btn" style="margin-top:8px; padding:6px 10px; font-size:14px;" onclick="applyCoupon()">
+          Appliquer le code
+        </button>
+        <div id="coupon-message" style="font-size:13px; margin-top:5px;"></div>
+      </div>
+
+      <!-- Récapitulatif du prix façon Amazon -->
+      <div class="price-summary">
+        <div class="price-summary-title">Récapitulatif du prix</div>
+        <div class="summary-row">
+          <span>Article :</span>
+          <span id="summary-article">550 DH</span>
+        </div>
+        <div class="summary-row">
+          <span>Remise :</span>
+          <span id="summary-discount">0 DH</span>
+        </div>
+        <div class="summary-row">
+          <span>Livraison :</span>
+          <span>0 DH</span>
+        </div>
+        <div class="summary-row summary-total">
+          <span>Montant total :</span>
+          <span id="summary-total">550 DH</span>
+        </div>
+      </div>
+
+      <!-- Champs cachés envoyés à Formspree -->
+      <input type="hidden" name="Prix_initial" id="prix-initial" value="550">
+      <input type="hidden" name="Prix_apres_remise" id="prix-remise" value="550">
+      <input type="hidden" name="Code_promo" id="code-promo" value="">
+
       <button type="submit" class="submit-btn">📩 Envoyer la commande</button>
     </form>
 
@@ -96,12 +265,127 @@
   &copy; 2025 NatureGlam. Tous droits réservés.
 </footer>
 
+<!-- Lightbox modal -->
+<div id="myModal" class="modal">
+  <span class="modal-close" onclick="closeModal()">&times;</span>
+  <img class="modal-content" id="modal-img">
+</div>
+
+<!-- Sticky CTA mobile -->
+<div class="sticky-cta">
+  <div class="sticky-cta-price">Philips Rouge • 550 DH</div>
+  <a class="sticky-cta-btn" href="https://wa.me/212674994867" target="_blank">
+    Commander WhatsApp
+  </a>
+</div>
+
 <script>
-  const images = ["Philipsrouge1.jpg","Philipsrouge2.jpg","Philipsrouge3.jpg","Philipsrouge4.jpg","Philipsrouge5.jpg","Philipsrouge6.jpg"];
+  /* Slider images produit */
+  const images = [
+    "Philipsrouge1.jpg",
+    "Philipsrouge2.jpg",
+    "Philipsrouge3.jpg",
+    "Philipsrouge4.jpg",
+    "Philipsrouge5.jpg",
+    "Philipsrouge6.jpg"
+  ];
   let index = 0;
   function showImage() { document.getElementById("main-img").src = images[index]; }
   function prevSlide() { index = (index-1+images.length)%images.length; showImage(); }
   function nextSlide() { index = (index+1)%images.length; showImage(); }
+
+  /* Lightbox */
+  function openModal(src) {
+    document.getElementById("myModal").style.display = "block";
+    document.getElementById("modal-img").src = src;
+  }
+  function closeModal() {
+    document.getElementById("myModal").style.display = "none";
+  }
+  window.onclick = function(event) {
+    const modal = document.getElementById("myModal");
+    if (event.target == modal) { modal.style.display = "none"; }
+  }
+
+  /* 🔹 Code promo -5% (NG5) – même logique que Babyliss */
+  const PRIX_PRODUIT = 550;       // prix Philips Rouge en DH
+  const CODE_PROMO = "NG5";       // code promo global
+  const REMISE_POURCENT = 5;      // 5%
+
+  function applyCoupon() {
+    const input = document.getElementById('coupon-input');
+    const message = document.getElementById('coupon-message');
+    const displayPrice = document.getElementById('display-price');
+    const prixInitialField = document.getElementById('prix-initial');
+    const prixRemiseField = document.getElementById('prix-remise');
+    const codeField = document.getElementById('code-promo');
+
+    const summaryArticle = document.getElementById('summary-article');
+    const summaryDiscount = document.getElementById('summary-discount');
+    const summaryTotal = document.getElementById('summary-total');
+
+    const code = (input.value || "").trim().toUpperCase();
+
+    // Prix de base
+    prixInitialField.value = PRIX_PRODUIT;
+    summaryArticle.textContent = PRIX_PRODUIT + " DH";
+
+    if (!code) {
+      // aucun code → retour au prix normal
+      displayPrice.textContent = PRIX_PRODUIT + " DH";
+      prixRemiseField.value = PRIX_PRODUIT;
+      codeField.value = "";
+      message.textContent = "";
+      summaryDiscount.textContent = "0 DH";
+      summaryDiscount.classList.remove('summary-discount-positive');
+      summaryTotal.textContent = PRIX_PRODUIT + " DH";
+      return;
+    }
+
+    if (code === CODE_PROMO) {
+      const prixRemise = Math.round(PRIX_PRODUIT * (100 - REMISE_POURCENT) / 100);
+      const montantRemise = PRIX_PRODUIT - prixRemise;
+
+      displayPrice.textContent = prixRemise + " DH (au lieu de " + PRIX_PRODUIT + " DH avec code " + CODE_PROMO + ")";
+      prixRemiseField.value = prixRemise;
+      codeField.value = code;
+
+      message.textContent = "✅ Code promo appliqué : -" + REMISE_POURCENT + "% (" + montantRemise + " DH de réduction)";
+      message.style.color = "#16a085";
+
+      summaryDiscount.textContent = "- " + montantRemise + " DH";
+      summaryDiscount.classList.add('summary-discount-positive');
+      summaryTotal.textContent = prixRemise + " DH";
+    } else {
+      displayPrice.textContent = PRIX_PRODUIT + " DH";
+      prixRemiseField.value = PRIX_PRODUIT;
+      codeField.value = "";
+
+      message.textContent = "❌ Code promo invalide";
+      message.style.color = "#dc2626";
+
+      summaryDiscount.textContent = "0 DH";
+      summaryDiscount.classList.remove('summary-discount-positive');
+      summaryTotal.textContent = PRIX_PRODUIT + " DH";
+    }
+  }
+
+  /* 🔹 Slider de messages dans le header */
+  const headerMessages = [
+    "🚚 Livraison gratuite partout au Maroc",
+    "💳 Paiement à la livraison, sans avance",
+    "✅ Produits 100% authentiques",
+    "📞 Service client WhatsApp : 06 74 99 48 67"
+  ];
+  let headerIndex = 0;
+  const headerTextEl = document.getElementById("header-slide-text");
+
+  function rotateHeaderMessage() {
+    headerIndex = (headerIndex + 1) % headerMessages.length;
+    headerTextEl.textContent = headerMessages[headerIndex];
+  }
+
+  setInterval(rotateHeaderMessage, 4000); // change toutes les 4 secondes
 </script>
 
 </body>
