@@ -875,6 +875,33 @@
       font-size: 17px;
     }
   }
+
+  /* ✅ Ajustements desktop pour que le hero soit plus petit et centré */
+  @media (min-width: 1000px) {
+    .hero {
+      max-width: 980px;
+      margin: 14px auto 18px;
+      padding: 20px 24px 22px;
+    }
+
+    .hero-content {
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 28px;
+    }
+
+    .hero-cta {
+      justify-content: center;
+    }
+
+    .hero-badges {
+      justify-content: center;
+    }
+  }
 </style>
 </head>
 <body>
@@ -932,31 +959,7 @@
   <div class="info-pill secondary">✅ Articles authentiques et originaux</div>
 </div>
 
-<!-- Pourquoi NatureGlam ? -->
-<section class="why-section">
-  <div class="why-title">Pourquoi choisir NatureGlam ?</div>
-  <div class="why-grid">
-    <div class="why-item">
-      <div class="why-item-title">✅ Produits 100% originaux</div>
-      <div class="why-item-text">
-        Tous nos articles sont importés depuis l’Europe et proviennent de fournisseurs officiels. Vous recevez exactement ce que vous voyez sur les photos.
-      </div>
-    </div>
-    <div class="why-item">
-      <div class="why-item-title">🚚 Livraison rapide 24–72h</div>
-      <div class="why-item-text">
-        Livraison à domicile partout au Maroc. Le livreur vous appelle avant de venir pour confirmer l’adresse et le créneau.
-      </div>
-    </div>
-    <div class="why-item">
-      <div class="why-item-title">💳 Paiement à la livraison</div>
-      <div class="why-item-text">
-        Pas d’avance, vous payez uniquement à la réception de votre commande. Retour possible sous 14 jours si le produit ne vous convient pas.
-      </div>
-    </div>
-  </div>
-</section>
-
+<!-- CATEGORIES + PRODUITS (d'abord les produits) -->
 <nav class="category-bar">
   <button class="category-btn active" data-category="all">Tous les produits</button>
   <button class="category-btn" data-category="coiffage">Coiffage & lisseurs</button>
@@ -1259,6 +1262,31 @@
 
 </div>
 
+<!-- Pourquoi NatureGlam ? (après les produits) -->
+<section class="why-section">
+  <div class="why-title">Pourquoi choisir NatureGlam ?</div>
+  <div class="why-grid">
+    <div class="why-item">
+      <div class="why-item-title">✅ Produits 100% originaux</div>
+      <div class="why-item-text">
+        Tous nos articles sont importés depuis l’Europe et proviennent de fournisseurs officiels. Vous recevez exactement ce que vous voyez sur les photos.
+      </div>
+    </div>
+    <div class="why-item">
+      <div class="why-item-title">🚚 Livraison rapide 24–72h</div>
+      <div class="why-item-text">
+        Livraison à domicile partout au Maroc. Le livreur vous appelle avant de venir pour confirmer l’adresse et le créneau.
+      </div>
+    </div>
+    <div class="why-item">
+      <div class="why-item-title">💳 Paiement à la livraison</div>
+      <div class="why-item-text">
+        Pas d’avance, vous payez uniquement à la réception de votre commande. Retour possible sous 14 jours si le produit ne vous convient pas.
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ⭐ AVIS CLIENTES -->
 <section class="reviews-section">
   <div class="reviews-title">Avis de nos clientes</div>
@@ -1412,29 +1440,3 @@ setInterval(rotateHeaderMessage, 4000);
 
 </body>
 </html>
-/* Ajustements desktop pour que le hero soit plus petit et centré */
-@media (min-width: 1000px) {
-  .hero {
-    max-width: 980px;        /* plus étroit que 1200px */
-    margin: 14px auto 18px;  /* bien centré */
-    padding: 20px 24px 22px; /* un peu moins haut */
-  }
-
-  .hero-content {
-    max-width: 720px;
-    margin: 0 auto;
-    text-align: center;      /* texte centré */
-  }
-
-  .hero h1 {
-    font-size: 28px;         /* un peu moins grand */
-  }
-
-  .hero-cta {
-    justify-content: center; /* boutons centrés */
-  }
-
-  .hero-badges {
-    justify-content: center; /* badges centrés */
-  }
-}
