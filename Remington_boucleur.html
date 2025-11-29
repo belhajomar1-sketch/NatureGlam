@@ -7,7 +7,7 @@
 <style>
   body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f5f5f5; }
   header { display:flex; justify-content:space-between; align-items:center; background:#fff; padding:10px 20px; box-shadow:0 4px 8px rgba(0,0,0,0.1); position:sticky; top:0; z-index:100; }
-  .logo img { height:80px; object-fit:contain; }
+  .logo img { height:80px; object-fit:contain; cursor:pointer; }
   .header-info { font-weight:bold; color:#0b84ff; font-size:16px; }
   .banner { background:#0b84ff; color:white; text-align:center; padding:10px; font-size:16px; font-weight:bold; }
   .product-container { display:flex; flex-wrap:wrap; max-width:1200px; margin:auto; gap:20px; padding:20px; justify-content:center; }
@@ -26,12 +26,43 @@
   button.submit-btn { background:#0b84ff; color:white; border:none; padding:10px; border-radius:10px; font-weight:bold; cursor:pointer; transition:0.3s; }
   button.submit-btn:hover { background:#0963c6; }
   footer { text-align:center; padding:15px; background:#fff; margin-top:40px; font-size:14px; color:#555; font-family: Arial, sans-serif; font-style:italic; }
+
+  /* Bloc récapitulatif prix façon Amazon */
+  .price-summary {
+    background:#f9fafb;
+    border-radius:10px;
+    padding:10px 12px;
+    margin-top:10px;
+    border:1px solid #e5e7eb;
+    font-size:14px;
+  }
+  .price-summary-title {
+    font-weight:bold;
+    margin-bottom:6px;
+  }
+  .summary-row {
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:4px;
+  }
+  .summary-row.summary-total {
+    margin-top:6px;
+    font-weight:bold;
+    font-size:15px;
+  }
+  .summary-discount-positive {
+    color:#16a085;
+  }
 </style>
 </head>
 <body>
 
 <header>
-  <div class="logo"><img src="nov. 2025, 02_24_43.png" alt="NatureGlam Logo"></div>
+  <div class="logo">
+    <a href="index.html">
+      <img src="nov. 2025, 02_24_43.png" alt="NatureGlam Logo">
+    </a>
+  </div>
   <div class="header-info">Retour gratuit</div>
 </header>
 
@@ -49,7 +80,12 @@
 
   <div class="product-details">
     <h1>Remington Boucleur à cheveux Conique 13-25mm - Silk</h1>
-    <div class="price">💰 800 DH</div>
+
+    <!-- Prix -->
+    <div class="price">
+      💰 <span id="display-price">800 DH</span>
+    </div>
+
     <div class="desc">
       Fer à boucler conique, céramique enrichie en protéine de soie, écran LCD, 11 réglages 120-220°C, boucles en spirale, pochette incluse.
     </div>
@@ -75,6 +111,43 @@
       <input type="text" name="Ville" placeholder="Ville" required>
       <input type="tel" name="Téléphone" placeholder="Téléphone" required>
       <input type="hidden" name="Produit" value="Remington Boucleur Silk 13-25mm">
+
+      <!-- Code promo -->
+      <div class="section-title">Code promo</div>
+      <div class="desc">
+        <input type="text" id="coupon-input" placeholder="Code promo (optionnel)">
+        <button type="button" class="submit-btn" style="margin-top:8px; padding:6px 10px; font-size:14px;" onclick="applyCoupon()">
+          Appliquer le code
+        </button>
+        <div id="coupon-message" style="font-size:13px; margin-top:5px;"></div>
+      </div>
+
+      <!-- Récapitulatif du prix -->
+      <div class="price-summary">
+        <div class="price-summary-title">Récapitulatif du prix</div>
+        <div class="summary-row">
+          <span>Article :</span>
+          <span id="summary-article">800 DH</span>
+        </div>
+        <div class="summary-row">
+          <span>Remise :</span>
+          <span id="summary-discount">0 DH</span>
+        </div>
+        <div class="summary-row">
+          <span>Livraison :</span>
+          <span>0 DH</span>
+        </div>
+        <div class="summary-row summary-total">
+          <span>Montant total :</span>
+          <span id="summary-total">800 DH</span>
+        </div>
+      </div>
+
+      <!-- Champs cachés pour Formspree -->
+      <input type="hidden" name="Prix_initial" id="prix-initial" value="800">
+      <input type="hidden" name="Prix_apres_remise" id="prix-remise" value="800">
+      <input type="hidden" name="Code_promo" id="code-promo" value="">
+
       <button type="submit" class="submit-btn">📩 Envoyer la commande</button>
     </form>
 
@@ -89,11 +162,77 @@
 </footer>
 
 <script>
+  /* Slider images */
   const images = ["silk1.jpg","silk2.jpg","silk3.jpg"];
   let index = 0;
   function showImage() { document.getElementById("main-img").src = images[index]; }
   function prevSlide() { index = (index-1+images.length)%images.length; showImage(); }
   function nextSlide() { index = (index+1)%images.length; showImage(); }
+
+  /* Codes promo -5% (NG5 ou Meryem01) */
+  const PRIX_PRODUIT = 800;                     // prix normal en DH
+  const CODES_VALIDES = ["NG5", "MERYEM01"];   // codes valides
+  const REMISE_POURCENT = 5;                   // 5%
+
+  function applyCoupon() {
+    const input = document.getElementById('coupon-input');
+    const message = document.getElementById('coupon-message');
+    const displayPrice = document.getElementById('display-price');
+    const prixInitialField = document.getElementById('prix-initial');
+    const prixRemiseField = document.getElementById('prix-remise');
+    const codeField = document.getElementById('code-promo');
+
+    const summaryArticle = document.getElementById('summary-article');
+    const summaryDiscount = document.getElementById('summary-discount');
+    const summaryTotal = document.getElementById('summary-total');
+
+    const code = (input.value || "").trim().toUpperCase();
+
+    // Prix de base
+    prixInitialField.value = PRIX_PRODUIT;
+    summaryArticle.textContent = PRIX_PRODUIT + " DH";
+
+    // Aucun code → prix normal
+    if (!code) {
+      displayPrice.textContent = "800 DH";
+      prixRemiseField.value = PRIX_PRODUIT;
+      codeField.value = "";
+      message.textContent = "";
+      summaryDiscount.textContent = "0 DH";
+      summaryDiscount.classList.remove('summary-discount-positive');
+      summaryTotal.textContent = PRIX_PRODUIT + " DH";
+      return;
+    }
+
+    // Code valide (NG5 ou Meryem01)
+    if (CODES_VALIDES.includes(code)) {
+      const prixRemise = Math.round(PRIX_PRODUIT * (100 - REMISE_POURCENT) / 100);
+      const montantRemise = PRIX_PRODUIT - prixRemise;
+
+      displayPrice.textContent = prixRemise + " DH (au lieu de " + PRIX_PRODUIT + " DH avec code " + code + ")";
+      prixRemiseField.value = prixRemise;
+      codeField.value = code;
+
+      message.textContent = "✅ Code promo appliqué : -" + REMISE_POURCENT + "% (" + montantRemise + " DH de réduction)";
+      message.style.color = "#16a085";
+
+      summaryDiscount.textContent = "- " + montantRemise + " DH";
+      summaryDiscount.classList.add('summary-discount-positive');
+      summaryTotal.textContent = prixRemise + " DH";
+    } else {
+      // Code invalide
+      displayPrice.textContent = "800 DH";
+      prixRemiseField.value = PRIX_PRODUIT;
+      codeField.value = "";
+
+      message.textContent = "❌ Code promo invalide";
+      message.style.color = "#dc2626";
+
+      summaryDiscount.textContent = "0 DH";
+      summaryDiscount.classList.remove('summary-discount-positive');
+      summaryTotal.textContent = PRIX_PRODUIT + " DH";
+    }
+  }
 </script>
 
 </body>

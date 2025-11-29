@@ -224,7 +224,7 @@
       <input type="tel" name="Téléphone" placeholder="Téléphone" required>
       <input type="hidden" name="Produit" value="Demeliss Saint Algue Gold Lisseur">
 
-      <!-- Code promo -5% (NG5) -->
+      <!-- Code promo -5% (NG5 ou Meryem01) -->
       <div class="section-title">Code promo</div>
       <div class="desc">
         <input type="text" id="coupon-input" placeholder="Code promo (optionnel)">
@@ -362,10 +362,10 @@
     if (event.target == modal) { modal.style.display = "none"; }
   }
 
-  /* 🔹 Code promo -5% (NG5) – même logique que Babyliss */
-  const PRIX_PRODUIT = 500;       // prix Demeliss en DH
-  const CODE_PROMO = "NG5";       // même code promo
-  const REMISE_POURCENT = 5;      // 5%
+  /* 🔹 Code promo -5% (NG5 ou Meryem01) */
+  const PRIX_PRODUIT = 500;                    // prix Demeliss en DH
+  const CODES_VALIDES = ["NG5", "MERYEM01"];   // codes valides
+  const REMISE_POURCENT = 5;                   // 5%
 
   function applyCoupon() {
     const input = document.getElementById('coupon-input');
@@ -397,11 +397,11 @@
       return;
     }
 
-    if (code === CODE_PROMO) {
+    if (CODES_VALIDES.includes(code)) {
       const prixRemise = Math.round(PRIX_PRODUIT * (100 - REMISE_POURCENT) / 100);
       const montantRemise = PRIX_PRODUIT - prixRemise;
 
-      displayPrice.textContent = prixRemise + " DH (au lieu de " + PRIX_PRODUIT + " DH avec code " + CODE_PROMO + ")";
+      displayPrice.textContent = prixRemise + " DH (au lieu de " + PRIX_PRODUIT + " DH avec code " + code + ")";
       prixRemiseField.value = prixRemise;
       codeField.value = code;
 
