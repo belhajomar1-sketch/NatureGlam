@@ -83,7 +83,7 @@
 
     <!-- Prix -->
     <div class="price">
-      💰 <span id="display-price">800 DH</span>
+      💰 <span id="display-price">400 DH</span>
     </div>
 
     <div class="desc">
@@ -127,7 +127,7 @@
         <div class="price-summary-title">Récapitulatif du prix</div>
         <div class="summary-row">
           <span>Article :</span>
-          <span id="summary-article">800 DH</span>
+          <span id="summary-article">400 DH</span>
         </div>
         <div class="summary-row">
           <span>Remise :</span>
@@ -139,13 +139,13 @@
         </div>
         <div class="summary-row summary-total">
           <span>Montant total :</span>
-          <span id="summary-total">800 DH</span>
+          <span id="summary-total">400 DH</span>
         </div>
       </div>
 
       <!-- Champs cachés pour Formspree -->
-      <input type="hidden" name="Prix_initial" id="prix-initial" value="800">
-      <input type="hidden" name="Prix_apres_remise" id="prix-remise" value="800">
+      <input type="hidden" name="Prix_initial" id="prix-initial" value="400">
+      <input type="hidden" name="Prix_apres_remise" id="prix-remise" value="400">
       <input type="hidden" name="Code_promo" id="code-promo" value="">
 
       <button type="submit" class="submit-btn">📩 Envoyer la commande</button>
@@ -170,7 +170,7 @@
   function nextSlide() { index = (index+1)%images.length; showImage(); }
 
   /* Codes promo -5% (NG5 ou Meryem01) */
-  const PRIX_PRODUIT = 800;                     // prix normal en DH
+  const PRIX_PRODUIT = 400;                     // prix normal en DH
   const CODES_VALIDES = ["NG5", "MERYEM01"];   // codes valides
   const REMISE_POURCENT = 5;                   // 5%
 
@@ -194,7 +194,7 @@
 
     // Aucun code → prix normal
     if (!code) {
-      displayPrice.textContent = "800 DH";
+      displayPrice.textContent = "400 DH";
       prixRemiseField.value = PRIX_PRODUIT;
       codeField.value = "";
       message.textContent = "";
@@ -221,7 +221,7 @@
       summaryTotal.textContent = prixRemise + " DH";
     } else {
       // Code invalide
-      displayPrice.textContent = "800 DH";
+      displayPrice.textContent = "400 DH";
       prixRemiseField.value = PRIX_PRODUIT;
       codeField.value = "";
 
