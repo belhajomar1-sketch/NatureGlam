@@ -379,7 +379,7 @@
       <input type="tel" name="Téléphone" placeholder="Téléphone" required>
       <input type="hidden" name="Produit" value="Babyliss Brosse Soufflante 1200W">
 
-      <!-- Code promo -5% -->
+      <!-- Code promo -->
       <div class="section-title">Code promo</div>
       <div class="desc">
         <input type="text" id="coupon-input" placeholder="Code promo (optionnel)">
@@ -530,10 +530,10 @@
     if (event.target == modal) { modal.style.display = "none"; }
   }
 
-  // 🔹 Code promo -5% (NG5) pour Babyliss
-  const PRIX_PRODUIT = 800;       // prix normal en DH
-  const CODE_PROMO = "NG5";       // code que tu donnes aux clientes
-  const REMISE_POURCENT = 5;      // 5%
+  // 🔹 Code promo -5% (NG5 ou Meryem01)
+  const PRIX_PRODUIT = 800;             // prix normal en DH
+  const CODES_VALIDES = ["NG5", "MERYEM01"]; // codes valides
+  const REMISE_POURCENT = 5;           // 5%
 
   function applyCoupon() {
     const input = document.getElementById('coupon-input');
@@ -553,8 +553,8 @@
     prixInitialField.value = PRIX_PRODUIT;
     summaryArticle.textContent = PRIX_PRODUIT + " DH";
 
+    // Aucun code → prix normal
     if (!code) {
-      // aucun code → retour au prix normal
       displayPrice.textContent = PRIX_PRODUIT + " DH";
       prixRemiseField.value = PRIX_PRODUIT;
       codeField.value = "";
@@ -565,11 +565,12 @@
       return;
     }
 
-    if (code === CODE_PROMO) {
+    // Code valide (NG5 ou Meryem01)
+    if (CODES_VALIDES.includes(code)) {
       const prixRemise = Math.round(PRIX_PRODUIT * (100 - REMISE_POURCENT) / 100);
       const montantRemise = PRIX_PRODUIT - prixRemise;
 
-      displayPrice.textContent = prixRemise + " DH (au lieu de " + PRIX_PRODUIT + " DH avec code " + CODE_PROMO + ")";
+      displayPrice.textContent = prixRemise + " DH (au lieu de " + PRIX_PRODUIT + " DH avec code " + code + ")";
       prixRemiseField.value = prixRemise;
       codeField.value = code;
 
@@ -580,6 +581,7 @@
       summaryDiscount.classList.add('summary-discount-positive');
       summaryTotal.textContent = prixRemise + " DH";
     } else {
+      // Code invalide
       displayPrice.textContent = PRIX_PRODUIT + " DH";
       prixRemiseField.value = PRIX_PRODUIT;
       codeField.value = "";
